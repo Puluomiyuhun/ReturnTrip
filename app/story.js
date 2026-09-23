@@ -927,7 +927,7 @@
       "id": "c1-091",
       "chapter": "第一章 · 明天见",
       "speaker": "",
-      "text": "我把肩膀放下来一点。发错了。那句话也没提卧室，是我自己往这边想的。",
+      "text": "……",
       "intro": false,
       "phoneTitle": "陈屿",
       "phone": [
@@ -943,7 +943,9 @@
         "leadMs": 700,
         "holdMs": 1300,
         "focusPhone": true,
-        "duck": true
+        "duck": true,
+        "hideText": true,
+        "soundOnReveal": true
       },
       "next": "c1-092"
     },
@@ -951,7 +953,7 @@
       "id": "c1-092",
       "chapter": "第一章 · 明天见",
       "speaker": "",
-      "text": "我试着把手机放进口袋，手碰到袋口，又拿了出来。听他亲口说一句就行。",
+      "text": "我把肩膀放下来一点。发错了。那句话也没提卧室，是我自己往这边想的。",
       "intro": false,
       "next": "c1-093"
     },
@@ -959,7 +961,7 @@
       "id": "c1-093",
       "chapter": "第一章 · 明天见",
       "speaker": "",
-      "text": "我立刻拨了过去，按错一次，重新按。",
+      "text": "我试着把手机放进口袋，手碰到袋口，又拿了出来。听他亲口说一句就行。",
       "intro": false,
       "next": "c1-094"
     },
@@ -967,7 +969,7 @@
       "id": "c1-094",
       "chapter": "第一章 · 明天见",
       "speaker": "",
-      "text": "等待接通的声音在客厅里响。我赶紧把音量按低。",
+      "text": "手指点错了地方。我退回聊天界面，重新按下语音通话。",
       "intro": false,
       "phoneTitle": "陈屿",
       "phoneStatus": "正在呼叫…",
