@@ -38,6 +38,7 @@ module.exports=async function(win){
  // Fast forward through ordinary narration must not stop scheduled impacts.
  assert.ok(knockEvents.filter(e=>e.type==='stop').every(e=>e.node===Object.values(require('./story.js').nodes).filter(n=>!n.end).at(-1).id));
  await js(`window.qaGoto=(id)=>{const path=[];let n=HCStory.nodes[HCStory.start];while(n){path.push(n.id);if(n.id===id)break;n=HCStory.nodes[n.next];}localStorage.setItem('huicheng.chapters.v07.auto',JSON.stringify({story:HCStory.id,version:HCStory.version,path,savedAt:Date.now()}));document.getElementById('end-title').click();document.getElementById('continue').click();};void 0;`);
+ await require('./blackout-qa.cjs')({js,pause,capture});
  for(const [scene,id] of Object.entries(await js(`Object.fromEntries(['store','restaurant','hallway','living-day','hallway-open'].map(s=>[s,Object.values(HCStory.nodes).find(n=>n.scene===s).id]))`))){
    await js(`qaGoto(${JSON.stringify(id)})`);await pause(2300);await capture(scene);
  }

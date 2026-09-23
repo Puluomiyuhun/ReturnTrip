@@ -69,3 +69,12 @@ test('chapter three phone impacts keep the physically open door and restore with
  const {cues,synthesize}=require('./knock.js');assert.equal(cues['knock-phone'].pan,0);assert.equal(cues['knock-phone'].count,1);
  assert.notDeepEqual(synthesize('phone'),synthesize('door'));
 });
+
+test('blackouts retain the preceding image and camera on forward, restore and back',()=>{
+ const m=createModel(story);let image='black',camera='wide',count=0;
+ while(!m.node().end){const p=m.presentation();if(p.scene!=='black'){image=p.scene;camera=p.camera;}else count++;
+ assert.equal(p.backgroundScene,image);assert.equal(p.backgroundCamera,camera);
+ const restored=createModel(story);restored.restore(m.snapshot());assert.deepEqual(restored.presentation(),p);
+ const before=m.snapshot();if(m.next()){m.back();assert.deepEqual(m.snapshot(),before);assert.deepEqual(m.presentation(),p);m.next();}}
+ assert.ok(count>5);
+});

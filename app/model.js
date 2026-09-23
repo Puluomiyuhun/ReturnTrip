@@ -16,11 +16,12 @@
      return {...n,text:n.textByChoice?.[c] ?? n.text,sound:n.soundByChoice?.[c] ?? n.sound};
    }
    function presentation(){
-     const state={scene:'black',place:'',time:'',ambience:'quiet',chapter:'第一章 · 明天见',pressure:0,camera:'wide',focus:'none',heldPhone:null};
+     const state={scene:'black',backgroundScene:'black',backgroundCamera:'wide',place:'',time:'',ambience:'quiet',chapter:'第一章 · 明天见',pressure:0,camera:'wide',focus:'none',heldPhone:null};
      for(const id of path){
        const n=story.nodes[id];
        if(n.scene!=null||n.phone||n.phoneStatus||n.clearPhone){state.heldPhone=null;if(state.focus==='phone'||n.scene!=null)state.focus='none';}
        for(const key of ['scene','place','time','ambience','chapter','pressure','camera','focus'])if(n[key]!=null)state[key]=n[key];
+       if(state.scene!=='black'){state.backgroundScene=state.scene;state.backgroundCamera=state.camera;}
        if(n.holdPhone&&n.phone)state.heldPhone={title:n.phoneTitle,lines:n.phone};
      }
      return state;
