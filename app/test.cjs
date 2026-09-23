@@ -20,7 +20,7 @@ test('two-line black opening; five chapters terminate; every save restores scene
 });
 test('invalid, out of order and older release saves cannot corrupt progress',()=>{
  const m=createModel(story),before=m.snapshot();
- for(const data of [{...before,story:'huicheng-chapter1-v1'},{...before,story:'huicheng-chapters-v06'},{...before,path:[story.start,story.chapters[1].start]},{...before,version:99},{...before,path:[story.start,story.start]}]){assert.ok(!m.validate(data));assert.throws(()=>m.restore(data));assert.deepEqual(m.snapshot(),before);}
+ for(const data of [{...before,story:'huicheng-chapter1-v1'},{...before,story:'huicheng-chapters-v06'},...['07','08','09','10'].map(v=>({...before,story:'huicheng-chapters-v'+v})),{...before,path:[story.start,story.chapters[1].start]},{...before,version:99},{...before,path:[story.start,story.start]}]){assert.ok(!m.validate(data));assert.throws(()=>m.restore(data));assert.deepEqual(m.snapshot(),before);}
 });
 test('backtracking across each chapter boundary restores prior scene and ambience',()=>{
  for(let i=1;i<story.chapters.length;i++){
@@ -38,42 +38,14 @@ test('all staged scenes and assets exist; cues are recognized; no author notes l
  if(n.sound)assert.ok(sounds.has(n.sound),n.sound);
  if(n.phone){assert.ok(n.phoneTitle);assert.ok(n.phone.every(p=>p.length===2&&p.every(s=>typeof s==='string')));}
  assert.doesNotMatch(n.text,/^@ |^# |\*\*|制作备注|哪一个我/);
- if(n.speaker)assert.ok(['张明远','陈屿','老唐','房东','李哲','录音中的声音'].some(name=>n.speaker.startsWith(name)));
+ if(n.speaker)assert.ok(['张明远','陈屿','老唐','房东','李哲','录音中的声音','门内的声音','民警'].some(name=>n.speaker.startsWith(name)));
  }
  for(const match of css.matchAll(/url\('([^']+)'\)/g))assert.ok(fs.existsSync(path.join(__dirname,match[1])),match[1]);
 });
 
-test('0.7 imports preserve every in-progress position and resume beyond its old ending',()=>{
- const oldPath=[];for(const [chapter,count]of [[1,134],[2,132],[3,147]])for(let i=1;i<=count;i++)oldPath.push(`c${chapter}-${String(i).padStart(3,'0')}`);
- const m=createModel(story);
- for(let i=1;i<=oldPath.length;i++){const legacy={story:'huicheng-chapters-v07',version:1,path:oldPath.slice(0,i)};assert.ok(m.validate(legacy));m.restore(legacy);assert.equal(m.node().id,oldPath[i-1]);assert.equal(m.snapshot().story,story.id);}
- const complete={story:'huicheng-chapters-v07',version:1,path:[...oldPath,'end']},original=JSON.stringify(complete);
- m.restore(complete);assert.equal(m.node().id,'c3-147');m.next();assert.equal(m.node().id,story.chapters[3].start);assert.equal(JSON.stringify(complete),original);
- for(const bad of [[...oldPath.slice(0,-1),'end'],[...oldPath,story.chapters[3].start],[...oldPath.slice(0,2),oldPath[0]]])assert.equal(m.validate({...complete,path:bad}),false);
-});
 
-test('chapter four keeps mute status through the response and clears it when the mic reopens',()=>{
- const m=createModel(story);while(!m.node().holdPhone||!m.node().phoneStatus)assert.ok(m.next());
- let count=0;
- do{const restored=createModel(story);restored.restore(m.snapshot());assert.equal(restored.presentation().heldStatus.status,'通话中 · 麦克风已关闭');count++;m.next();}while(!m.node().phoneStatus);
- assert.ok(count>=5);assert.equal(m.presentation().heldStatus,null);assert.equal(m.node().phoneStatus,'通话中');m.back();assert.ok(m.presentation().heldStatus);
-});
 
-test('0.8 imports preserve in-progress positions and continue at chapter five after completion',()=>{
- const ids=Object.keys(story.nodes).filter(id=>/^c[1-4]-/.test(id));const m=createModel(story);
- for(let i=1;i<=ids.length;i++){const save={story:'huicheng-chapters-v08',version:1,path:ids.slice(0,i)};m.restore(save);assert.equal(m.node().id,ids[i-1]);}
- m.restore({story:'huicheng-chapters-v08',version:1,path:[...ids,'end']});assert.equal(m.node().id,'c4-122');m.next();assert.equal(m.node().id,story.chapters[4].start);
- assert.equal(m.validate({story:'huicheng-chapters-v08',version:1,path:[...ids,story.chapters[4].start]}),false);
-});
 
-test('chapter five quotes the established first-night call without adding impact sounds',()=>{
- const first=Object.values(story.nodes).filter(n=>n.id.startsWith('c1-'));
- const fifth=Object.values(story.nodes).filter(n=>n.id.startsWith('c5-'));
- const original=first.find(n=>n.text==='我不知道是不是进人了。我没看见，但声音在屋里。');assert.ok(original);
- assert.ok(fifth.some(n=>n.speaker==='录音中的声音'&&n.text==='我不知道是不是进人了。'));
- assert.ok(fifth.some(n=>n.speaker==='录音中的声音'&&n.text==='我没看见，但声音在屋里。'));
- assert.ok(fifth.every(n=>!n.sound));
-});
 
 test('the unsettling message survives reaction nodes, restores, and clears at the reply',()=>{
  const m=createModel(story);
@@ -87,21 +59,6 @@ test('the unsettling message survives reaction nodes, restores, and clears at th
  const {cues}=require('./knock.js');assert.ok(cues['knock-muted'].pan>0);assert.ok(cues['knock-room'].pan<0);
 });
 
-test('chapter three phone impacts keep the physically open door and restore without stale state',()=>{
- const m=createModel(story),heard=[];
- while(!m.node().end){
-  if(m.node().sound==='knock-phone'){
-   assert.equal(m.presentation().scene,'hallway-open');assert.equal(m.presentation().ambience,'quiet');
-   assert.equal(m.presentation().chapter,story.chapters[2].title);
-   const restored=createModel(story);restored.restore(m.snapshot());assert.deepEqual(restored.presentation(),m.presentation());
-   assert.ok(restored.back());assert.ok(restored.next());assert.equal(restored.node().sound,'knock-phone');heard.push(m.node().id);
-  }
-  m.next();
- }
- assert.equal(heard.length,2);assert.equal(m.presentation().scene,'hallway-open');
- const {cues,synthesize}=require('./knock.js');assert.equal(cues['knock-phone'].pan,0);assert.equal(cues['knock-phone'].count,1);
- assert.notDeepEqual(synthesize('phone'),synthesize('door'));
-});
 
 test('blackouts retain the preceding image and camera on forward, restore and back',()=>{
  const m=createModel(story);let image='black',camera='wide',count=0;

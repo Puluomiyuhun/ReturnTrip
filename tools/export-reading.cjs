@@ -17,6 +17,6 @@ const chapters=story.chapters.map(chapter=>{
  for(const n of nodes)if(!result.includes(n.text))throw new Error('Missing '+n.id);
  return result;
 });
-fs.writeFileSync(path.join(output,'回程_0.9_前五章阅读稿.md'),'# 回程 0.9 前五章阅读稿\n\n第五章开发稿；前四章保持现有版本。省略演出参数。\n\n'+chapters.join('\n\n'));
-fs.writeFileSync(path.join(output,'回程_第五章_你听一下.md'),chapters[4]);
+fs.writeFileSync(path.join(output,'回程_0.11_前五章阅读稿.md'),'# 回程 0.11 前五章阅读稿\n\n公交卡与身份线重写稿。省略演出参数；新旧剧情不混读。\n\n'+chapters.join('\n\n'));
+fs.writeFileSync(path.join(output,'回程_第五章_照片里的位置.md'),chapters[4]);
 console.log('Exported five chapters; all narrative text verified.');

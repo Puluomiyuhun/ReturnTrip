@@ -10,17 +10,18 @@ module.exports=async({js,capture,pause})=>{
   assert.equal(await js(`document.getElementById('text').textContent`),await js(`HCStory.nodes[${JSON.stringify(beat.next)}].text`));
  }
  // Ordinary incoming messages block accidental double advances, too.
- const previous=await js(`Object.values(HCStory.nodes).find(n=>n.next==='c2-061-notice').id`);
+ const beat=beats.find(n=>n.id.startsWith('c4-')&&n.phone?.some(p=>p[1]==='离门远一点。'));
+ const previous=await js(`Object.values(HCStory.nodes).find(n=>n.next===${JSON.stringify(beat.id)}).id`);
  await js(`qaGoto(${JSON.stringify(previous)});document.getElementById('settings').click();document.getElementById('stage-toggle').click();document.getElementById('close-panel').click();document.getElementById('scenery').click();document.getElementById('scenery').click();`);
  assert.equal(await js(`document.getElementById('text').textContent`),'……');
  assert.equal(await js(`document.getElementById('dialogue').getAttribute('aria-busy')`),'true');
  await pause(950);await js(`document.getElementById('scenery').click()`);
- assert.equal(await js(`document.getElementById('text').textContent`),await js(`HCStory.nodes['c2-061'].text`));
+ assert.equal(await js(`document.getElementById('text').textContent`),await js(`HCStory.nodes[${JSON.stringify(beat.next)}].text`));
  await js(`document.getElementById('settings').click();document.getElementById('stage-toggle').click();document.getElementById('close-panel').click();`);
  // This is the reported two-message scene; both lines must fit without scrolling.
- await js(`qaGoto('c2-061-notice')`);
+ await js(`qaGoto(${JSON.stringify(beat.id)})`);
  const bounds=await js(`(()=>{const p=document.getElementById('phone'),b=p.querySelectorAll('.bubble');return {text:[...b].map(x=>x.textContent),bottom:b[b.length-1].getBoundingClientRect().bottom,box:p.getBoundingClientRect().bottom};})()`);
- assert.deepEqual(bounds.text,['里面有声音。','有人叫我。']);assert.ok(bounds.bottom<=bounds.box);
+ assert.deepEqual(bounds.text,['离门远一点。','先下楼。']);assert.ok(bounds.bottom<=bounds.box);
  await capture('message-before-reaction');
  await js(`document.getElementById('scenery').click()`);await capture('message-reaction');
  const voices=await js(`(()=>{const out={};for(const n of Object.values(HCStory.nodes)){if(n.speaker&&!out[n.speaker.split(' · ')[0]])out[n.speaker.split(' · ')[0]]=n.id;}return out;})()`);

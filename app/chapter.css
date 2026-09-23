@@ -92,3 +92,6 @@ header #chapter,#scene-label,#scene-label #time{font-size:var(--story-type);line
 [data-voice="recording"]{--voice-accent:#c7cbd1!important}
 #speaker{color:var(--voice-accent);font-size:20px;font-weight:500;border-left:3px solid var(--voice-accent);padding-left:10px;line-height:1.35}
 #phone .phone-top b,.log-entry>small{color:var(--voice-accent)}
+
+/* Subtle distinct accent for ordinary police dialogue. */
+[data-voice=police] { --voice-accent: #adc4c9!important; }

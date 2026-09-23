@@ -2,7 +2,7 @@ const { app, BrowserWindow, Menu, session } = require('electron');
 const path = require('node:path');
 const smoke=process.argv.includes('--smoke-test');
 const qa=process.argv.includes('--qa-test');
-app.setName('HuichengChapters09');
+app.setName('HuichengChapters11');
 if(qa)app.setPath('userData',path.join(app.getPath('temp'),'huicheng-qa-'+process.pid));
 // A stable userData name keeps saves across future prototype builds.
 const single = app.requestSingleInstanceLock();

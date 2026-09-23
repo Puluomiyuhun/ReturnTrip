@@ -2,9 +2,9 @@
 (() => {
  'use strict';
  const $=id=>document.getElementById(id);
- const voiceKey=name=>[['张明远','mingyuan'],['陈屿','chen'],['老唐','tang'],['房东','landlord'],['李哲','lizhe'],['录音中的声音','recording']].find(([who])=>(name||'').startsWith(who))?.[1]||'narrator';
+ const voiceKey=name=>[['张明远','mingyuan'],['陈屿','chen'],['老唐','tang'],['房东','landlord'],['李哲','lizhe'],['录音中的声音','recording'],['门内的声音','recording'],['民警','police']].find(([who])=>(name||'').startsWith(who))?.[1]||'narrator';
  const story=window.HCStory, model=window.HCModel.createModel(story);
- const STORAGE='huicheng.chapters.v09.';
+ const STORAGE='huicheng.chapters.v11.';
  const prefs={speed:32,size:30,volume:30,delay:3,mute:false,typeScale:3,staging:true};
  let staging=false,stageTimers=[],finishStage=null,textHeld=false;
  let mode='title',typing=null,autoTimer=null,auto=false,toastTimer=null,fullText='',typed=0,lastFocus=null;
@@ -131,7 +131,7 @@
    $('speaker').textContent=n.speaker||'';$('speaker').hidden=!n.speaker;$('phone').hidden=!(phone||phoneStatus);$('phone').querySelector('b').textContent=n.phoneTitle||p.heldPhone?.title||p.heldStatus?.title||'陈屿';$('dialogue').classList.toggle('sound-beat',!!n.beat);$('phone-lines').replaceChildren();
    if(phoneStatus){const status=document.createElement('div');status.className='call-status';status.textContent=phoneStatus;$('phone-lines').append(status);}
    if(phone){for(const [speaker,text]of phone){const bubble=document.createElement('div');bubble.className='bubble'+(speaker==='我'?' me':'');bubble.textContent=text;$('phone-lines').append(bubble);}$('phone').scrollTop=0;}
-   if(n.evidence)button('查看照片',()=>showEvidence(n.evidence),$('phone-lines')).className='evidence-button';
+   if(n.evidence)button('查看记录',()=>showEvidence(n.evidence),$('phone-lines')).className='evidence-button';
    $('choices').hidden=true;$('back').disabled=model.snapshot().path.length===1;
    fullText=n.text||'';typed=0;$('text').textContent='';$('advance-mark').textContent='';$('reading-hint').textContent='轻点画面，显示整句';
    if(!quiet&&!(timed&&n.staging.soundOnReveal))sound.play(n.sound);
@@ -150,12 +150,12 @@
  }
  function button(label,action,parent){const b=document.createElement('button');b.textContent=label;b.addEventListener('click',action);parent.append(b);return b;}
  function paragraph(text,parent,cls='muted'){const p=document.createElement('p');p.className=cls;p.textContent=text;parent.append(p);return p;}
- function showEvidence(evidence){const body=openPanel(evidence.title,'收到的照片');const img=document.createElement('img');img.className='evidence-image';img.src=evidence.src;img.alt=evidence.alt;body.append(img);paragraph(evidence.alt,body);}
+ function showEvidence(evidence){const body=openPanel(evidence.title,'留存记录');const img=document.createElement('img');img.className='evidence-image';img.src=evidence.src;img.alt=evidence.alt;body.append(img);paragraph(evidence.alt,body);}
  function history(){
    const body=openPanel('回看','MEMORIES / 已经读过的文字');
    paragraph('这里保留本次已读的对白与手机消息。',body);
    for(const n of model.history()){
-     if(n.end)continue;const row=document.createElement('article');row.className='log-entry';row.dataset.voice=voiceKey(n.speaker||n.phoneTitle);if(n.speaker){const who=document.createElement('small');who.textContent=n.speaker;row.append(who);}const unreadLines=n.phone?.slice(n.noticeBefore?story.nodes[n.noticeBefore].phone?.length||0:0);if(unreadLines?.length){const label=document.createElement('small');label.textContent='与'+(n.phoneTitle||'陈屿')+'的消息';row.append(label);for(const [who,words] of unreadLines)paragraph(who+'：'+words,row,'log-message');}if(n.phoneStatus&&!n.noticeBefore)paragraph((n.phoneTitle||'陈屿')+' · '+n.phoneStatus,row,'log-message');paragraph(n.text,row,'');if(n.evidence)button('查看照片',()=>showEvidence(n.evidence),row);body.append(row);
+     if(n.end)continue;const row=document.createElement('article');row.className='log-entry';row.dataset.voice=voiceKey(n.speaker||n.phoneTitle);if(n.speaker){const who=document.createElement('small');who.textContent=n.speaker;row.append(who);}const unreadLines=n.phone?.slice(n.noticeBefore?story.nodes[n.noticeBefore].phone?.length||0:0);if(unreadLines?.length){const label=document.createElement('small');label.textContent='与'+(n.phoneTitle||'陈屿')+'的消息';row.append(label);for(const [who,words] of unreadLines)paragraph(who+'：'+words,row,'log-message');}if(n.phoneStatus&&!n.noticeBefore)paragraph((n.phoneTitle||'陈屿')+' · '+n.phoneStatus,row,'log-message');paragraph(n.text,row,'');if(n.evidence)button('查看记录',()=>showEvidence(n.evidence),row);body.append(row);
    }
    requestAnimationFrame(()=>$('panel').scrollTop=$('panel').scrollHeight);
  }
