@@ -7,9 +7,10 @@ const chapters=story.chapters.map(chapter=>{
  const lines=['# '+chapter.title,''];
  const nodes=Object.values(story.nodes).filter(n=>n.chapter===chapter.title);
  for(const n of nodes){
-  if(n.phone)lines.push(`> 手机消息 · ${n.phoneTitle}`,...n.phone.map(([who,text])=>`> ${who}：${text}  `),'');
+  const unreadLines=n.phone?.slice(n.noticeBefore?story.nodes[n.noticeBefore].phone?.length||0:0);
+  if(unreadLines?.length)lines.push(`> 手机消息 · ${n.phoneTitle}`,...unreadLines.map(([who,text])=>`> ${who}：${text}  `),'');
   if(n.evidence)lines.push('> 照片内容：'+n.evidence.alt,'');
-  if(n.phoneStatus)lines.push(`> ${n.phoneTitle} · ${n.phoneStatus}`,'');
+  if(n.phoneStatus&&!n.noticeBefore)lines.push(`> ${n.phoneTitle} · ${n.phoneStatus}`,'');
   lines.push(n.speaker?`**${n.speaker}**：${n.text}`:n.text,'');
  }
  const result=lines.join('\n');

@@ -77,6 +77,7 @@ module.exports=async function(win){
  assert.equal(await js(`!document.getElementById('phone').hidden&&document.getElementById('phone-lines').textContent.includes('麦克风已关闭')`),true);
  assert.equal(await js(`document.getElementById('dialogue').getBoundingClientRect().top-document.getElementById('phone').getBoundingClientRect().bottom>=8`),true);
  await capture('chapter4-muted');
+ await require('./message-order-qa.cjs')({js,capture,pause});
  const reaction=await js(`(()=>{const m=HCModel.createModel(HCStory),found=[];while(!m.node().end){if(m.presentation().heldPhone&&!m.node().phone)found.push(m.node());m.next();}return found.sort((a,b)=>b.text.length-a.text.length)[0].id;})()`);
  await js(`qaGoto(${JSON.stringify(reaction)})`);
  const held=await js(`(()=>{const phone=document.getElementById('phone'),dialogue=document.getElementById('dialogue');return {shown:!phone.hidden,gap:dialogue.getBoundingClientRect().top-phone.getBoundingClientRect().bottom,focus:document.getElementById('app').dataset.focus};})()`);

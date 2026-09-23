@@ -16,6 +16,7 @@ for(const [i,file] of files.entries()){
    if(count===1){n.chapter=chapter;n.pressure??=0;n.camera??='wide';}
    if(n.scene==='black')n.intro=true;
    // Black transitional sequences keep the blackout until a scene change.
+   require('./message-beats.cjs')(n,nodes);
    nodes[id]=n;pending={};
  }
 }
@@ -23,4 +24,4 @@ const ids=Object.keys(nodes);ids.forEach((id,i)=>nodes[id].next=ids[i+1]||'end')
 nodes.end={id:'end',end:true,text:'前四章 · 完'};
 const story={id:'huicheng-chapters-v08',version:1,title:'回程',start:ids[0],chapters,nodes};
 fs.writeFileSync(path.join(__dirname,'story.js'),`(function(root){const story=${JSON.stringify(story,null,2)};if(typeof module!=='undefined'&&module.exports)module.exports=story;else root.HCStory=story;})(typeof globalThis!=='undefined'?globalThis:this);\n`);
-console.log(JSON.stringify({chapters:chapters.length,nodes:ids.length,characters:Object.values(nodes).reduce((s,n)=>s+n.text.length+(n.phone||[]).reduce((a,p)=>a+p[1].length,0),0)},null,2));
+console.log(JSON.stringify({chapters:chapters.length,nodes:ids.length,characters:Object.values(nodes).reduce((s,n)=>s+n.text.length+(n.noticeFor?[]:n.phone||[]).reduce((a,p)=>a+p[1].length,0),0)},null,2));

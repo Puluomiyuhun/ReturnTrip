@@ -61,7 +61,7 @@ test('chapter four keeps mute status through the response and clears it when the
 
 test('the unsettling message survives reaction nodes, restores, and clears at the reply',()=>{
  const m=createModel(story);
- while(!m.node().holdPhone)assert.ok(m.next());
+ while(!m.node().holdPhone||m.node().noticeFor)assert.ok(m.next());
  assert.equal(m.presentation().focus,'phone');assert.deepEqual(m.presentation().heldPhone.lines,[['陈屿','你出来了？']]);
  let reactions=0;
  while(true){const before=m.snapshot();m.next();if(m.node().phone){assert.equal(m.presentation().heldPhone,null);assert.equal(m.presentation().focus,'door');m.back();assert.deepEqual(m.snapshot(),before);assert.ok(m.presentation().heldPhone);break;}
@@ -94,4 +94,11 @@ test('blackouts retain the preceding image and camera on forward, restore and ba
  const restored=createModel(story);restored.restore(m.snapshot());assert.deepEqual(restored.presentation(),p);
  const before=m.snapshot();if(m.next()){m.back();assert.deepEqual(m.snapshot(),before);assert.deepEqual(m.presentation(),p);m.next();}}
  assert.ok(count>5);
+});
+test('incoming messages have a separate beat and old same-version saves retain position',()=>{
+ const m=createModel(story),old=Object.values(story.nodes).filter(n=>!n.noticeFor).map(n=>n.id);
+ for(let i=1;i<=old.length;i++){m.restore({story:story.id,version:story.version,path:old.slice(0,i)});assert.equal(m.node().id,old[i-1]);}
+ for(const n of Object.values(story.nodes).filter(n=>n.noticeFor)){
+ assert.equal(n.text,'……');assert.equal(n.speaker,'');assert.equal(n.next,n.noticeFor);assert.equal(story.nodes[n.next].noticeBefore,n.id);assert.ok(!story.nodes[n.next].sound&&!story.nodes[n.next].staging);
+ }
 });
