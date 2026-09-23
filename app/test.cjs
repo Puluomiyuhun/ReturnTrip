@@ -10,13 +10,13 @@ test('knocking signals have a clear onset, finite unclipped samples and a quiet 
  for(const rate of [44100,48000])for(const kind of ['wall','room','door','far','phone']){const data=synthesize(kind,rate);let peak=0,tail=0;for(let i=0;i<data.length;i++){assert.ok(Number.isFinite(data[i]));peak=Math.max(peak,Math.abs(data[i]));if(i>data.length-rate*.1)tail=Math.max(tail,Math.abs(data[i]));}assert.ok(peak>.5&&peak<1);assert.ok(tail<.01);assert.equal(Math.abs(data.at(-1)),0);}
  for(const n of Object.values(story.nodes))if(n.text==='咚。咚。'||n.text==='上面，又响了两声。')assert.equal(cues[n.sound].count,2);
 });
-test('two-line black opening; four chapters terminate; every save restores scene and pressure',()=>{
+test('two-line black opening; five chapters terminate; every save restores scene and pressure',()=>{
  const m=createModel(story);assert.equal(m.presentation().scene,'black');m.next();assert.equal(m.presentation().scene,'black');m.next();assert.equal(m.presentation().scene,'bedroom-lit');m.reset();
  const seen=new Set(),chapters=new Set();
  while(true){const n=m.node();assert.ok(!seen.has(n.id),'cycle');seen.add(n.id);assert.ok(!n.choices);chapters.add(m.presentation().chapter);
  const restored=createModel(story);restored.restore(JSON.parse(JSON.stringify(m.snapshot())));assert.deepEqual(restored.presentation(),m.presentation());assert.deepEqual(restored.node(),m.node());
  if(n.end)break;assert.ok(m.next());}
- assert.equal(chapters.size,4);assert.equal(seen.size,Object.keys(story.nodes).length);assert.ok(!m.next());assert.ok(m.back());assert.ok(!m.node().end);
+ assert.equal(chapters.size,5);assert.equal(seen.size,Object.keys(story.nodes).length);assert.ok(!m.next());assert.ok(m.back());assert.ok(!m.node().end);
 });
 test('invalid, out of order and older release saves cannot corrupt progress',()=>{
  const m=createModel(story),before=m.snapshot();
@@ -38,7 +38,7 @@ test('all staged scenes and assets exist; cues are recognized; no author notes l
  if(n.sound)assert.ok(sounds.has(n.sound),n.sound);
  if(n.phone){assert.ok(n.phoneTitle);assert.ok(n.phone.every(p=>p.length===2&&p.every(s=>typeof s==='string')));}
  assert.doesNotMatch(n.text,/^@ |^# |\*\*|制作备注|哪一个我/);
- if(n.speaker)assert.ok(['张明远','陈屿','老唐','房东','李哲'].some(name=>n.speaker.startsWith(name)));
+ if(n.speaker)assert.ok(['张明远','陈屿','老唐','房东','李哲','录音中的声音'].some(name=>n.speaker.startsWith(name)));
  }
  for(const match of css.matchAll(/url\('([^']+)'\)/g))assert.ok(fs.existsSync(path.join(__dirname,match[1])),match[1]);
 });
@@ -57,6 +57,22 @@ test('chapter four keeps mute status through the response and clears it when the
  let count=0;
  do{const restored=createModel(story);restored.restore(m.snapshot());assert.equal(restored.presentation().heldStatus.status,'通话中 · 麦克风已关闭');count++;m.next();}while(!m.node().phoneStatus);
  assert.ok(count>=5);assert.equal(m.presentation().heldStatus,null);assert.equal(m.node().phoneStatus,'通话中');m.back();assert.ok(m.presentation().heldStatus);
+});
+
+test('0.8 imports preserve in-progress positions and continue at chapter five after completion',()=>{
+ const ids=Object.keys(story.nodes).filter(id=>/^c[1-4]-/.test(id));const m=createModel(story);
+ for(let i=1;i<=ids.length;i++){const save={story:'huicheng-chapters-v08',version:1,path:ids.slice(0,i)};m.restore(save);assert.equal(m.node().id,ids[i-1]);}
+ m.restore({story:'huicheng-chapters-v08',version:1,path:[...ids,'end']});assert.equal(m.node().id,'c4-122');m.next();assert.equal(m.node().id,story.chapters[4].start);
+ assert.equal(m.validate({story:'huicheng-chapters-v08',version:1,path:[...ids,story.chapters[4].start]}),false);
+});
+
+test('chapter five quotes the established first-night call without adding impact sounds',()=>{
+ const first=Object.values(story.nodes).filter(n=>n.id.startsWith('c1-'));
+ const fifth=Object.values(story.nodes).filter(n=>n.id.startsWith('c5-'));
+ const original=first.find(n=>n.text==='我不知道是不是进人了。我没看见，但声音在屋里。');assert.ok(original);
+ assert.ok(fifth.some(n=>n.speaker==='录音中的声音'&&n.text==='我不知道是不是进人了。'));
+ assert.ok(fifth.some(n=>n.speaker==='录音中的声音'&&n.text==='我没看见，但声音在屋里。'));
+ assert.ok(fifth.every(n=>!n.sound));
 });
 
 test('the unsettling message survives reaction nodes, restores, and clears at the reply',()=>{

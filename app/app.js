@@ -3,7 +3,7 @@
  'use strict';
  const $=id=>document.getElementById(id);
  const story=window.HCStory, model=window.HCModel.createModel(story);
- const STORAGE='huicheng.chapters.v08.';
+ const STORAGE='huicheng.chapters.v09.';
  const prefs={speed:32,size:30,volume:30,delay:3,mute:false,typeScale:3,staging:true};
  let staging=false,stageTimers=[],finishStage=null,textHeld=false;
  let mode='title',typing=null,autoTimer=null,auto=false,toastTimer=null,fullText='',typed=0,lastFocus=null;
@@ -191,7 +191,7 @@
  $('import-file').addEventListener('change',async event=>{const file=event.target.files[0];event.target.value='';if(!file)return;if(file.size>100000){toast('文件过大，不是有效的进度文件。');return;}try{const data=JSON.parse(await file.text());if(!model.validate(data))throw new Error();loadData(data);toast('已导入进度');}catch{toast('无法读取：文件不是本试作的有效进度。');}});
  $('start').onclick=()=>{const old=read('auto');if(model.validate(old))confirmAction('开始新的阅读','开始后会更新自动存档，手动存档仍会保留。',start);else start();};
  $('continue').onclick=()=>loadData(read('auto'));
- $('chapter4-preview').onclick=async()=>{const begin=async()=>{if($('panel').open)$('panel').close();setAuto(false);model.reset();while(model.node().id!==story.chapters[3].start&&model.next()){}setMode('game');await sound.init();render({instant:true,quiet:true});$('dialogue').focus();};if(model.validate(read('auto')))confirmAction('试读第四章','将从第四章开始并更新本版自动进度，手动存档仍保留。',begin);else await begin();};
+ $('chapter5-preview').onclick=async()=>{const begin=async()=>{if($('panel').open)$('panel').close();setAuto(false);model.reset();while(model.node().id!==story.chapters[4].start&&model.next()){}setMode('game');await sound.init();render({instant:true,quiet:true});$('dialogue').focus();};if(model.validate(read('auto')))confirmAction('试读第五章','将从第五章开始并更新本版自动进度，手动存档仍保留。',begin);else await begin();};
  $('title-load').onclick=()=>slots(false);$('title-settings').onclick=settings;
  // One delegated handler: controls never fall through to story advancement.
  let pointerStart=null;

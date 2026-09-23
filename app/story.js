@@ -1,5 +1,5 @@
 (function(root){const story={
-  "id": "huicheng-chapters-v08",
+  "id": "huicheng-chapters-v09",
   "version": 1,
   "title": "回程",
   "start": "c1-001",
@@ -19,6 +19,10 @@
     {
       "title": "第四章 · 先别挂",
       "start": "c4-001"
+    },
+    {
+      "title": "第五章 · 你听一下",
+      "start": "c5-001"
     }
   ],
   "nodes": {
@@ -4816,12 +4820,1033 @@
       "speaker": "张明远 · 电话",
       "text": "你拿好手机。先别挂。",
       "intro": false,
+      "next": "c5-001"
+    },
+    "c5-001": {
+      "id": "c5-001",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "陈屿没有挂。",
+      "intro": true,
+      "scene": "black",
+      "place": "502门口",
+      "time": "21:02",
+      "ambience": "hush",
+      "pressure": 1,
+      "camera": "wide",
+      "card": [
+        "第五章",
+        "你听一下",
+        ""
+      ],
+      "next": "c5-002"
+    },
+    "c5-002": {
+      "id": "c5-002",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我听着他的呼吸，嘴唇贴到手机边上，又把刚才的话咽了回去。",
+      "intro": false,
+      "next": "c5-003"
+    },
+    "c5-003": {
+      "id": "c5-003",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "别走，下来，等着。说哪一句，我都怕他又听见另一句。",
+      "intro": false,
+      "next": "c5-004"
+    },
+    "c5-004": {
+      "id": "c5-004",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "老唐",
+      "text": "你先坐。我看着楼梯。",
+      "intro": false,
+      "next": "c5-005"
+    },
+    "c5-005": {
+      "id": "c5-005",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "他把椅子往后挪了一点，避开门口。我这次坐下了。两条腿撑得太久，膝盖弯下去的时候有点疼。",
+      "intro": false,
+      "next": "c5-006"
+    },
+    "c5-006": {
+      "id": "c5-006",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "民警问陈屿，刚才那句“现在出来”，能不能再说清楚，是在哪儿听见的。",
+      "intro": false,
+      "scene": "hallway-open",
+      "place": "502门口",
+      "time": "21:02",
+      "ambience": "hush",
+      "pressure": 1,
+      "camera": "wide",
+      "next": "c5-007"
+    },
+    "c5-007": {
+      "id": "c5-007",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "陈屿 · 电话",
+      "text": "还是门里面。跟刚才一样。",
+      "intro": false,
+      "next": "c5-008"
+    },
+    "c5-008": {
+      "id": "c5-008",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "民警问有没有看见人。他说没有，门没开。",
+      "intro": false,
+      "next": "c5-009"
+    },
+    "c5-009": {
+      "id": "c5-009",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我把另一只手压在膝盖上。没有去看那扇门。",
+      "intro": false,
+      "next": "c5-010"
+    },
+    "c5-010": {
+      "id": "c5-010",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "问到声音还在不在，他说停了一会儿，又有，听不清后面几个字。",
+      "intro": false,
+      "next": "c5-011"
+    },
+    "c5-011": {
+      "id": "c5-011",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远 · 电话",
+      "text": "你别往前凑。",
+      "intro": false,
+      "next": "c5-012"
+    },
+    "c5-012": {
+      "id": "c5-012",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "这句几乎是抢着说出来的。我看了看民警，怕自己又打断他。",
+      "intro": false,
+      "next": "c5-013"
+    },
+    "c5-013": {
+      "id": "c5-013",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "他示意没事，让陈屿保持距离，又问手机能不能收到文字。",
+      "intro": false,
+      "next": "c5-014"
+    },
+    "c5-014": {
+      "id": "c5-014",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "陈屿 · 电话",
+      "text": "能。刚才照片都发过去了。",
+      "intro": false,
+      "next": "c5-015"
+    },
+    "c5-015": {
+      "id": "c5-015",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我退回聊天。指尖有汗，键盘总往旁边滑。我在裤子上擦了一下，重新打。",
+      "intro": false,
+      "next": "c5-016"
+    },
+    "c5-016": {
+      "id": "c5-016",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我把手机放平，让身边的人也能看见。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "我",
+          "你先站稳，不用靠近门。看见这条，回我一个好。"
+        ]
+      ],
+      "next": "c5-017"
+    },
+    "c5-017": {
+      "id": "c5-017",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "下面很快多了一个字。",
+      "intro": false,
+      "next": "c5-018"
+    },
+    "c5-018": {
+      "id": "c5-018",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我盯着那个好。刚才问了那么多句，都不如这一下让我心里有底。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "好"
+        ]
+      ],
+      "next": "c5-019"
+    },
+    "c5-019": {
+      "id": "c5-019",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "至少这句话，他确实看见了。",
+      "intro": false,
+      "next": "c5-020"
+    },
+    "c5-020": {
+      "id": "c5-020",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远 · 电话",
+      "text": "我先打字跟你说。你不用急着回，手拿稳。",
+      "intro": false,
+      "next": "c5-021"
+    },
+    "c5-021": {
+      "id": "c5-021",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "陈屿 · 电话",
+      "text": "行。",
+      "intro": false,
+      "next": "c5-022"
+    },
+    "c5-022": {
+      "id": "c5-022",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "他的声音也松了一点。我把充电宝拿出来插上，剩下的线绕在掌心，免得垂到地上。",
+      "intro": false,
+      "next": "c5-023"
+    },
+    "c5-023": {
+      "id": "c5-023",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "老唐问还要不要水。我点头，接过来喝了一口。这次没有呛。",
+      "intro": false,
+      "next": "c5-024"
+    },
+    "c5-024": {
+      "id": "c5-024",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "出去的民警回来了。房东迎上去，两个人把照片又看了一遍。",
+      "intro": false,
+      "time": "21:05",
+      "pressure": 0,
+      "next": "c5-025"
+    },
+    "c5-025": {
+      "id": "c5-025",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "相邻的两个入口都查过了，没有找到黑外套的人。有人记得看见过外卖员，说不清是不是我们要找的那个。",
+      "intro": false,
+      "next": "c5-026"
+    },
+    "c5-026": {
+      "id": "c5-026",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我想起楼下那辆没熄火的车，刚要接话，又停了。那人是提着餐箱上来的，不能只凭一件深色衣服就认。",
+      "intro": false,
+      "next": "c5-027"
+    },
+    "c5-027": {
+      "id": "c5-027",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "民警把这些记下来，接着向房东确认楼门的位置。没有说人已经走了，也没有说照片是假的。",
+      "intro": false,
+      "next": "c5-028"
+    },
+    "c5-028": {
+      "id": "c5-028",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "房东说可以陪他去看楼下出入口的监控。我立刻站起来，充电线绷了一下，手机差点从膝盖上滑下去。",
+      "intro": false,
+      "next": "c5-029"
+    },
+    "c5-029": {
+      "id": "c5-029",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远",
+      "text": "我也去。",
+      "intro": false,
+      "next": "c5-030"
+    },
+    "c5-030": {
+      "id": "c5-030",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "老唐",
+      "text": "你先把他这边接住。有消息会告诉你的。",
+      "intro": false,
+      "next": "c5-031"
+    },
+    "c5-031": {
+      "id": "c5-031",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我低头看手机。陈屿的好还在最下面。",
+      "intro": false,
+      "next": "c5-032"
+    },
+    "c5-032": {
+      "id": "c5-032",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我坐回去，给房东让开。他临走时拿走了放在玄关上的钥匙，门仍旧敞着。",
+      "intro": false,
+      "next": "c5-033"
+    },
+    "c5-033": {
+      "id": "c5-033",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "留下的民警问我，陈屿现在说的那些话，有没有办法让他录一小段。",
+      "intro": false,
+      "next": "c5-034"
+    },
+    "c5-034": {
+      "id": "c5-034",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我看向屏幕上的通话条。",
+      "intro": false,
+      "next": "c5-035"
+    },
+    "c5-035": {
+      "id": "c5-035",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "挂掉，录音，再发来。也就一小会儿。",
+      "intro": false,
+      "next": "c5-036"
+    },
+    "c5-036": {
+      "id": "c5-036",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我刚才还一直叫他别挂。",
+      "intro": false,
+      "next": "c5-037"
+    },
+    "c5-037": {
+      "id": "c5-037",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远 · 电话",
+      "text": "陈屿，你手机能发语音吧？",
+      "intro": false,
+      "next": "c5-038"
+    },
+    "c5-038": {
+      "id": "c5-038",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "陈屿 · 电话",
+      "text": "能。你要挂啊？",
+      "intro": false,
+      "next": "c5-039"
+    },
+    "c5-039": {
+      "id": "c5-039",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我一下没接上。",
+      "intro": false,
+      "next": "c5-040"
+    },
+    "c5-040": {
+      "id": "c5-040",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远 · 电话",
+      "text": "我不走。咱们先用字聊，我就在这里回你。",
+      "intro": false,
+      "next": "c5-041"
+    },
+    "c5-041": {
+      "id": "c5-041",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "民警让我把要做的事也打出来，不用让他记住一长串。",
+      "intro": false,
+      "next": "c5-042"
+    },
+    "c5-042": {
+      "id": "c5-042",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我检查了一遍，删掉末尾那句“别害怕”。写上也没用。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "我",
+          "我一直看着消息。挂掉后先回个好，再录一小段你那里听到的声音。站在原地录就行。"
+        ]
+      ],
+      "next": "c5-043"
+    },
+    "c5-043": {
+      "id": "c5-043",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远 · 电话",
+      "text": "你自己挂。我等你发消息。",
+      "intro": false,
+      "next": "c5-044"
+    },
+    "c5-044": {
+      "id": "c5-044",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "他嗯了一声。又等了一会儿，通话条才不见。",
+      "intro": false,
+      "next": "c5-045"
+    },
+    "c5-045": {
+      "id": "c5-045",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我把手机往眼前拿近了些，盯着聊天最下面。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phoneStatus": "通话已结束",
+      "pressure": 1,
+      "next": "c5-046"
+    },
+    "c5-046": {
+      "id": "c5-046",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "一秒。两秒。",
+      "intro": false,
+      "next": "c5-047"
+    },
+    "c5-047": {
+      "id": "c5-047",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "来了。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "好"
+        ]
+      ],
+      "next": "c5-048"
+    },
+    "c5-048": {
+      "id": "c5-048",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我赶紧也回了一个好。打完以后才觉得多余，手已经按下发送。",
+      "intro": false,
+      "next": "c5-049"
+    },
+    "c5-049": {
+      "id": "c5-049",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "这样我听见开头，就知道他是照着刚收到的消息录的。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "我",
+          "好，我在。先说一句电话挂了，再录。"
+        ]
+      ],
+      "next": "c5-050"
+    },
+    "c5-050": {
+      "id": "c5-050",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "老唐站在我旁边。我想让他也拿手机盯着，转念一想，消息只会发到我这里。",
+      "intro": false,
+      "next": "c5-051"
+    },
+    "c5-051": {
+      "id": "c5-051",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我把屏幕朝他偏了一点。",
+      "intro": false,
+      "next": "c5-052"
+    },
+    "c5-052": {
+      "id": "c5-052",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "这次等得久些。我总觉得该有二十秒了，低头看，时间还是刚才那一分钟。",
+      "intro": false,
+      "time": "21:08",
+      "next": "c5-053"
+    },
+    "c5-053": {
+      "id": "c5-053",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "民警没有催。他把自己的手机收起来，让我收到以后先保存原消息。",
+      "intro": false,
+      "next": "c5-054"
+    },
+    "c5-054": {
+      "id": "c5-054",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "楼道里有人下楼。老唐往旁边让了让，等人过去，又站回原来的地方。",
+      "intro": false,
+      "next": "c5-055"
+    },
+    "c5-055": {
+      "id": "c5-055",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我拇指碰在语音通话的按钮上。只要按一下，就能重新打过去。",
+      "intro": false,
+      "next": "c5-056"
+    },
+    "c5-056": {
+      "id": "c5-056",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "再等两秒。",
+      "intro": false,
+      "next": "c5-057"
+    },
+    "c5-057": {
+      "id": "c5-057",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "语音到了。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "[语音 · 24秒]"
+        ]
+      ],
+      "pressure": 1,
+      "next": "c5-058"
+    },
+    "c5-058": {
+      "id": "c5-058",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我没有马上点，先抬头看了民警一眼。他往我这边靠近，说听一下。",
+      "intro": false,
+      "next": "c5-059"
+    },
+    "c5-059": {
+      "id": "c5-059",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我把音量往下调了一格，点了播放。",
+      "intro": false,
+      "next": "c5-060"
+    },
+    "c5-060": {
+      "id": "c5-060",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "陈屿 · 语音",
+      "text": "电话挂了。我站着没动。你听一下。",
+      "intro": false,
+      "next": "c5-061"
+    },
+    "c5-061": {
+      "id": "c5-061",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "接着是一点摩擦声。很轻，像他换了只手拿手机。",
+      "intro": false,
+      "next": "c5-062"
+    },
+    "c5-062": {
+      "id": "c5-062",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我也换了只手。充电线蹭到椅子，我立刻把它握住，怕盖住录音里的声音。",
+      "intro": false,
+      "next": "c5-063"
+    },
+    "c5-063": {
+      "id": "c5-063",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "几秒里没有人说话。老唐低头看着屏幕，民警站在另一边。",
+      "intro": false,
+      "next": "c5-064"
+    },
+    "c5-064": {
+      "id": "c5-064",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "然后，有个声音问了一句。",
+      "intro": false,
+      "next": "c5-065"
+    },
+    "c5-065": {
+      "id": "c5-065",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "录音中的声音",
+      "text": "谁？",
+      "intro": false,
+      "pressure": 2,
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 850
+      },
+      "next": "c5-066"
+    },
+    "c5-066": {
+      "id": "c5-066",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我后背慢慢离开了椅背。",
+      "intro": false,
+      "next": "c5-067"
+    },
+    "c5-067": {
+      "id": "c5-067",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "那个人像是清了一下嗓子，又问了一遍。第二遍比第一遍重一点。",
+      "intro": false,
+      "next": "c5-068"
+    },
+    "c5-068": {
+      "id": "c5-068",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我伸手碰了暂停。",
+      "intro": false,
+      "next": "c5-069"
+    },
+    "c5-069": {
+      "id": "c5-069",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "老唐",
+      "text": "怎么了？",
+      "intro": false,
+      "next": "c5-070"
+    },
+    "c5-070": {
+      "id": "c5-070",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我没看他，低头把进度往前拖。手指划得太远，拖到了最开头。",
+      "intro": false,
+      "next": "c5-071"
+    },
+    "c5-071": {
+      "id": "c5-071",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "陈屿又说了一遍电话挂了。我把后面的几秒重新听完。",
+      "intro": false,
+      "next": "c5-072"
+    },
+    "c5-072": {
+      "id": "c5-072",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "还是那两声。",
+      "intro": false,
+      "next": "c5-073"
+    },
+    "c5-073": {
+      "id": "c5-073",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我记得自己昨晚也喊过两次。第一声太轻，嗓子没打开，我才又喊了一声。",
+      "intro": false,
+      "next": "c5-074"
+    },
+    "c5-074": {
+      "id": "c5-074",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "可谁都能问这个。怕屋里进了人，都可能这么问。",
+      "intro": false,
+      "next": "c5-075"
+    },
+    "c5-075": {
+      "id": "c5-075",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我把手机转向老唐。",
+      "intro": false,
+      "next": "c5-076"
+    },
+    "c5-076": {
+      "id": "c5-076",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远",
+      "text": "这个声音……你听着像谁？",
+      "intro": false,
+      "next": "c5-077"
+    },
+    "c5-077": {
+      "id": "c5-077",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "老唐拿近了一点。他没有马上说名字，先问我是不是又把通话接上了。",
+      "intro": false,
+      "next": "c5-078"
+    },
+    "c5-078": {
+      "id": "c5-078",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我摇头，把聊天界面往上划了一下，露出那条语音。",
+      "intro": false,
+      "next": "c5-079"
+    },
+    "c5-079": {
+      "id": "c5-079",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "民警也看见了。通话已经结束，正在播放的是收到的消息。",
+      "intro": false,
+      "next": "c5-080"
+    },
+    "c5-080": {
+      "id": "c5-080",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "老唐",
+      "text": "有点像你。太闷了，再听后面。",
+      "intro": false,
+      "next": "c5-081"
+    },
+    "c5-081": {
+      "id": "c5-081",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我看着他的嘴，想等他改口。他已经把手机递回来了。",
+      "intro": false,
+      "next": "c5-082"
+    },
+    "c5-082": {
+      "id": "c5-082",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "后面还有十几秒。",
+      "intro": false,
+      "next": "c5-083"
+    },
+    "c5-083": {
+      "id": "c5-083",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我点下播放，没把进度往回拖。",
+      "intro": false,
+      "next": "c5-084"
+    },
+    "c5-084": {
+      "id": "c5-084",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "新消息从上面挤下来。我没有点。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "听见了吗"
+        ]
+      ],
+      "pressure": 2,
+      "next": "c5-085"
+    },
+    "c5-085": {
+      "id": "c5-085",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "录音里有人吸气，吸到一半，停住。随后是一点很近的磕碰声。",
+      "intro": false,
+      "next": "c5-086"
+    },
+    "c5-086": {
+      "id": "c5-086",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我往椅子下面看了一眼。我的充电线还攥在手里。",
+      "intro": false,
+      "next": "c5-087"
+    },
+    "c5-087": {
+      "id": "c5-087",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "那个声音又说话了。",
+      "intro": false,
+      "next": "c5-088"
+    },
+    "c5-088": {
+      "id": "c5-088",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "录音中的声音",
+      "text": "我不知道是不是进人了。",
+      "intro": false,
+      "pressure": 3,
+      "staging": {
+        "leadMs": 500,
+        "holdMs": 1100,
+        "hideText": true
+      },
+      "next": "c5-089"
+    },
+    "c5-089": {
+      "id": "c5-089",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我抓住老唐的手腕。",
+      "intro": false,
+      "next": "c5-090"
+    },
+    "c5-090": {
+      "id": "c5-090",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "他刚才还弯着腰，这会儿慢慢直了起来。",
+      "intro": false,
+      "next": "c5-091"
+    },
+    "c5-091": {
+      "id": "c5-091",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "录音中的声音",
+      "text": "我没看见，但声音在屋里。",
+      "intro": false,
+      "next": "c5-092"
+    },
+    "c5-092": {
+      "id": "c5-092",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "没有接着说。语音播完了，旁边那个小标记停下来。",
+      "intro": false,
+      "next": "c5-093"
+    },
+    "c5-093": {
+      "id": "c5-093",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "老唐的手腕还在我手里。我松了一下，没松开。",
+      "intro": false,
+      "next": "c5-094"
+    },
+    "c5-094": {
+      "id": "c5-094",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远",
+      "text": "昨晚……",
+      "intro": false,
+      "next": "c5-095"
+    },
+    "c5-095": {
+      "id": "c5-095",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我说不下去。他看了我一眼，又看屏幕。",
+      "intro": false,
+      "next": "c5-096"
+    },
+    "c5-096": {
+      "id": "c5-096",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "老唐",
+      "text": "你昨晚给我打电话，是说过这个。",
+      "intro": false,
+      "next": "c5-097"
+    },
+    "c5-097": {
+      "id": "c5-097",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "他说得不重。我却一下觉得椅子太矮，想站起来，腿抵着椅沿，没站成。",
+      "intro": false,
+      "next": "c5-098"
+    },
+    "c5-098": {
+      "id": "c5-098",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "民警问我们这句话是什么时候说的。我把手机递出去，让老唐替我说。",
+      "intro": false,
+      "next": "c5-099"
+    },
+    "c5-099": {
+      "id": "c5-099",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "在他开口以前，我已经想起了那时自己站在哪里。",
+      "intro": false,
+      "next": "c5-100"
+    },
+    "c5-100": {
+      "id": "c5-100",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "玄关。背抵着墙，钥匙在外套兜里。一只鞋的后跟被我踩扁了。",
+      "intro": false,
+      "next": "c5-101"
+    },
+    "c5-101": {
+      "id": "c5-101",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "老唐说的是昨晚一点多，他接到我电话，穿鞋出门去接我。",
+      "intro": false,
+      "next": "c5-102"
+    },
+    "c5-102": {
+      "id": "c5-102",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "他往下说的时候，我一直看着敞开的门。",
+      "intro": false,
+      "next": "c5-103"
+    },
+    "c5-103": {
+      "id": "c5-103",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "民警把语音又听了一遍，问这段话有没有录下来、发给过别人。我摇头，想到昨晚开过录音，又赶紧停住。",
+      "intro": false,
+      "next": "c5-104"
+    },
+    "c5-104": {
+      "id": "c5-104",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "张明远",
+      "text": "我昨晚录过屋里的声音。在打电话以前。我找一下。",
+      "intro": false,
+      "next": "c5-105"
+    },
+    "c5-105": {
+      "id": "c5-105",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "他让我先留着，不要删，也别转来转去。我点头，拿回手机，手指却没能点开录音软件。",
+      "intro": false,
+      "next": "c5-106"
+    },
+    "c5-106": {
+      "id": "c5-106",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "上面的聊天还在等我。",
+      "intro": false,
+      "next": "c5-107"
+    },
+    "c5-107": {
+      "id": "c5-107",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "现在没声音了"
+        ]
+      ],
+      "holdPhone": true,
+      "focus": "phone",
+      "pressure": 3,
+      "staging": {
+        "leadMs": 500,
+        "holdMs": 1500,
+        "focusPhone": true,
+        "hideText": true
+      },
+      "next": "c5-108"
+    },
+    "c5-108": {
+      "id": "c5-108",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我先打了一个听见了。",
+      "intro": false,
+      "next": "c5-109"
+    },
+    "c5-109": {
+      "id": "c5-109",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "删掉。",
+      "intro": false,
+      "next": "c5-110"
+    },
+    "c5-110": {
+      "id": "c5-110",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我不知道该怎么告诉他，刚才在门里面害怕的人，听起来是我。",
+      "intro": false,
+      "next": "c5-111"
+    },
+    "c5-111": {
+      "id": "c5-111",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "我把那句话也删了，一个字都没有发出去。",
+      "intro": false,
+      "next": "c5-112"
+    },
+    "c5-112": {
+      "id": "c5-112",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "最后，我只回了他一句。",
+      "intro": false,
+      "next": "c5-113"
+    },
+    "c5-113": {
+      "id": "c5-113",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "手指按下发送以后，我仍然看着屏幕。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "我",
+          "我在。"
+        ]
+      ],
+      "focus": "none",
+      "next": "c5-114"
+    },
+    "c5-114": {
+      "id": "c5-114",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "昨晚我站在门里面，也是这样等着有人回我。",
+      "intro": false,
       "next": "end"
     },
     "end": {
       "id": "end",
       "end": true,
-      "text": "前四章 · 完"
+      "text": "前五章 · 完"
     }
   }
 };if(typeof module!=='undefined'&&module.exports)module.exports=story;else root.HCStory=story;})(typeof globalThis!=='undefined'?globalThis:this);
