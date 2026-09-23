@@ -55,6 +55,7 @@ module.exports=async function(win){
  win.setContentSize(860,640);await pause(200);
  const compact=await js(`(()=>{const $=id=>document.getElementById(id);$('settings').click();const slider=document.querySelector('[aria-label="文字大小"]');slider.value=40;slider.dispatchEvent(new Event('input'));$('close-panel').click();qaGoto(HCStory.start);const problems=[];let count=0;while(count++<1000){const data=JSON.parse(localStorage.getItem('huicheng.chapters.v07.auto')),n=HCStory.nodes[data.path.at(-1)];if(n.end)break;const t=$('text').getBoundingClientRect(),d=$('dialogue').getBoundingClientRect();if(t.bottom>d.bottom||d.top<135||d.bottom>innerHeight)problems.push(n.id);$('scenery').click();}return problems;})()`);
  assert.deepEqual(compact,[]);
+ await require('./message-order-qa.cjs')({js,capture,pause});
  const reaction=await js(`(()=>{const m=HCModel.createModel(HCStory),found=[];while(!m.node().end){if(m.presentation().heldPhone&&!m.node().phone)found.push(m.node());m.next();}return found.sort((a,b)=>b.text.length-a.text.length)[0].id;})()`);
  await js(`qaGoto(${JSON.stringify(reaction)})`);
  const held=await js(`(()=>{const phone=document.getElementById('phone'),dialogue=document.getElementById('dialogue');return {shown:!phone.hidden,gap:dialogue.getBoundingClientRect().top-phone.getBoundingClientRect().bottom,focus:document.getElementById('app').dataset.focus};})()`);

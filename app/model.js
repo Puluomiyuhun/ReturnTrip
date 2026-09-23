@@ -28,6 +28,10 @@
    }
    function migrate(data){
      if(story.id==='huicheng-chapter1-v1' && story.start==='chapter1-intro-1' && data?.story===story.id && data.version===story.version && Array.isArray(data.path) && data.path[0]==='chapter1-000')return {...data,path:['chapter1-intro-1','chapter1-intro-2',...data.path]};
+     if(data?.story===story.id&&data.version===story.version&&Array.isArray(data.path)){
+       const expanded=[];for(const id of data.path){const prefix=story.nodes[id]?.noticeBefore;if(prefix&&expanded.at(-1)!==prefix)expanded.push(prefix);expanded.push(id);}
+       return {...data,path:expanded};
+     }
      return data;
    }
    function validate(data){

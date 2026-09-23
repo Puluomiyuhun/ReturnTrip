@@ -72,3 +72,14 @@ header #chapter,#scene-label,#scene-label #time{font-size:var(--story-type);line
 #app[data-phone-carry="true"] #phone .phone-top>span{display:none}
 #app[data-phone-carry="true"] #phone .bubble{font-size:var(--story-type);line-height:1.3;padding:6px 0;margin:0;text-align:left;white-space:nowrap}
 @media(prefers-reduced-motion:reduce){#app::before,#app header,#scene-label{transition:none!important}#app[data-effect="recoil"] .scenery{animation:none!important}}
+
+/* Subtle identity accents; spoken names and medium labels remain explicit. */
+#dialogue,#phone,.log-entry{--voice-accent:#c9d8d5}
+[data-voice="mingyuan"]{--voice-accent:#ead5ae!important}
+[data-voice="chen"]{--voice-accent:#add4e1!important}
+[data-voice="tang"]{--voice-accent:#b7d5b9!important}
+[data-voice="landlord"]{--voice-accent:#d9bea7!important}
+[data-voice="lizhe"]{--voice-accent:#cbbde1!important}
+[data-voice="recording"]{--voice-accent:#c7cbd1!important}
+#speaker{color:var(--voice-accent);font-size:20px;font-weight:500;border-left:3px solid var(--voice-accent);padding-left:10px;line-height:1.35}
+#phone .phone-top b,.log-entry>small{color:var(--voice-accent)}
