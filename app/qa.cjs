@@ -81,6 +81,16 @@ module.exports=async function(win){
  await pause(4100);state=await stageState();assert.equal(state.id,staged.previous);assert.equal(state.phase,'');assert.equal(state.busy,null);
  // Restoring at the cue shows the message immediately without replaying its wait.
  await js(`qaGoto(${JSON.stringify(staged.id)})`);state=await stageState();assert.equal(state.hidden,false);assert.equal(state.busy,null);
+ // The correction message must land before any interpretation, with a separate ellipsis beat.
+ const correction=await js(`(()=>{const all=Object.values(HCStory.nodes),i=all.findIndex(n=>n.phone?.some(p=>p[1]==='发错了。'));return {id:all[i].id,previous:all[i-1].id,next:all[i+1].id};})()`);
+ await js(`qaGoto(${JSON.stringify(correction.previous)});document.getElementById('scenery').click();`);
+ assert.equal(await js(`document.getElementById('text').textContent`),'');
+ await pause(850);
+ assert.equal(await js(`document.getElementById('text').textContent`),'……');assert.equal((await stageState()).hidden,false);
+ await js(`document.getElementById('scenery').click()`);assert.equal((await stageState()).id,correction.id);
+ await pause(1300);await capture('correction-pause');
+ await js(`document.getElementById('scenery').click()`);assert.equal((await stageState()).id,correction.next);
+ assert.ok((await js(`document.getElementById('text').textContent`)).startsWith('我把肩膀'));
  // The close impact must wait for its lead-in, and clicks cannot leak its subtitle.
  const impact=await js(`(()=>{const all=Object.values(HCStory.nodes),index=all.findIndex(n=>n.sound==='knock-room'&&n.staging?.soundOnReveal);return {id:all[index].id,previous:all[index-1].id,lead:all[index].staging.leadMs};})()`);
  await js(`qaGoto(${JSON.stringify(impact.previous)})`);
