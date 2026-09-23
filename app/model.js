@@ -16,16 +16,23 @@
      return {...n,text:n.textByChoice?.[c] ?? n.text,sound:n.soundByChoice?.[c] ?? n.sound};
    }
    function presentation(){
-     const state={scene:'black',place:'',time:'',ambience:'quiet',chapter:'第一章 · 明天见',pressure:0,camera:'wide',focus:'none',heldPhone:null};
+     const state={scene:'black',place:'',time:'',ambience:'quiet',chapter:'第一章 · 明天见',pressure:0,camera:'wide',focus:'none',heldPhone:null,heldStatus:null};
      for(const id of path){
        const n=story.nodes[id];
-       if(n.scene!=null||n.phone||n.phoneStatus||n.clearPhone){state.heldPhone=null;if(state.focus==='phone'||n.scene!=null)state.focus='none';}
+       if(n.scene!=null||n.phone||n.phoneStatus||n.clearPhone){state.heldPhone=null;state.heldStatus=null;if(state.focus==='phone'||n.scene!=null)state.focus='none';}
        for(const key of ['scene','place','time','ambience','chapter','pressure','camera','focus'])if(n[key]!=null)state[key]=n[key];
        if(n.holdPhone&&n.phone)state.heldPhone={title:n.phoneTitle,lines:n.phone};
+       if(n.holdPhone&&n.phoneStatus)state.heldStatus={title:n.phoneTitle,status:n.phoneStatus};
      }
      return state;
    }
    function migrate(data){
+     // Chapters 1–3 are unchanged. Remove only the old, completed three-chapter endpoint.
+     if(story.id==='huicheng-chapters-v08'&&data?.story==='huicheng-chapters-v07'&&data.version===1&&Array.isArray(data.path)){
+       const legacy=[...data.path];
+       if(legacy.at(-1)==='end'&&legacy.at(-2)==='c3-147')legacy.pop();
+       if(legacy.every(id=>/^c[123]-\d{3}$/.test(id)))return {...data,story:story.id,path:legacy};
+     }
      if(story.id==='huicheng-chapter1-v1' && story.start==='chapter1-intro-1' && data?.story===story.id && data.version===story.version && Array.isArray(data.path) && data.path[0]==='chapter1-000')return {...data,path:['chapter1-intro-1','chapter1-intro-2',...data.path]};
      return data;
    }

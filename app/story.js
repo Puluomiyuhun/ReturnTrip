@@ -1,5 +1,5 @@
 (function(root){const story={
-  "id": "huicheng-chapters-v07",
+  "id": "huicheng-chapters-v08",
   "version": 1,
   "title": "回程",
   "start": "c1-001",
@@ -15,6 +15,10 @@
     {
       "title": "第三章 · 门开着",
       "start": "c3-001"
+    },
+    {
+      "title": "第四章 · 先别挂",
+      "start": "c4-001"
     }
   ],
   "nodes": {
@@ -3778,12 +3782,1044 @@
       "speaker": "",
       "text": "电话里，陈屿还在等。我抓着那扇开到头的门，不敢松手。",
       "intro": false,
+      "next": "c4-001"
+    },
+    "c4-001": {
+      "id": "c4-001",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "老唐把衣服捡起来，搭在我胳膊上。",
+      "intro": true,
+      "scene": "black",
+      "place": "502门口",
+      "time": "20:49",
+      "ambience": "quiet",
+      "pressure": 1,
+      "camera": "wide",
+      "card": [
+        "第四章",
+        "先别挂",
+        ""
+      ],
+      "next": "c4-002"
+    },
+    "c4-002": {
+      "id": "c4-002",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "老唐",
+      "text": "门我扶着。你先跟他说话。",
+      "intro": false,
+      "next": "c4-003"
+    },
+    "c4-003": {
+      "id": "c4-003",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我看了一眼他的手，才把自己的手指掰开。掌心有几道红印，汗一浸，火辣辣的。",
+      "intro": false,
+      "next": "c4-004"
+    },
+    "c4-004": {
+      "id": "c4-004",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "民警站到我旁边，没有伸手拿电话。他让陈屿先把刚才拍的照片发过来。",
+      "intro": false,
+      "scene": "hallway-open",
+      "place": "502门口",
+      "time": "20:49",
+      "ambience": "hush",
+      "pressure": 1,
+      "camera": "wide",
+      "next": "c4-005"
+    },
+    "c4-005": {
+      "id": "c4-005",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "发了。你看一下。",
+      "intro": false,
+      "next": "c4-006"
+    },
+    "c4-006": {
+      "id": "c4-006",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我切回聊天。刚才那几条消息下面，多了一张图。",
+      "intro": false,
+      "next": "c4-007"
+    },
+    "c4-007": {
+      "id": "c4-007",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "照片打开了。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "[照片] 门口"
+        ]
+      ],
+      "evidence": {
+        "src": "assets/hallway.png",
+        "title": "陈屿发来的门口照片",
+        "alt": "亮灯的旧楼楼道，右侧502房门关闭，左侧是楼梯与窗户。"
+      },
+      "next": "c4-008"
+    },
+    "c4-008": {
+      "id": "c4-008",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "门牌是502。木门，右边的把手，左边那扇窄窗。",
+      "intro": false,
+      "next": "c4-009"
+    },
+    "c4-009": {
+      "id": "c4-009",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "没有人挡在镜头前，也没有什么需要放大才能看见的东西。就是一扇关着的门。",
+      "intro": false,
+      "next": "c4-010"
+    },
+    "c4-010": {
+      "id": "c4-010",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我把屏幕转向房东。",
+      "intro": false,
+      "next": "c4-011"
+    },
+    "c4-011": {
+      "id": "c4-011",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远",
+      "text": "是这里吧？",
+      "intro": false,
+      "next": "c4-012"
+    },
+    "c4-012": {
+      "id": "c4-012",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "房东凑近看。他先看门，又偏头看了看窗户。",
+      "intro": false,
+      "next": "c4-013"
+    },
+    "c4-013": {
+      "id": "c4-013",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "房东",
+      "text": "像。这里几栋楼一个时候造的，门后来各家换过。你让他把楼梯也拍进去。",
+      "intro": false,
+      "next": "c4-014"
+    },
+    "c4-014": {
+      "id": "c4-014",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我想说照片里已经有楼梯了，手指点到屏幕边上，才发现只露着一截。",
+      "intro": false,
+      "next": "c4-015"
+    },
+    "c4-015": {
+      "id": "c4-015",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "民警把照片留了一份，让同事去看相邻单元。他自己留下，又问陈屿进楼以前经过哪里。",
+      "intro": false,
+      "next": "c4-016"
+    },
+    "c4-016": {
+      "id": "c4-016",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "外面有停车棚。我从棚子旁边进来的。",
+      "intro": false,
+      "next": "c4-017"
+    },
+    "c4-017": {
+      "id": "c4-017",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "房东说两边都有。说完，他指给民警看，哪一边楼梯口朝着棚子。",
+      "intro": false,
+      "next": "c4-018"
+    },
+    "c4-018": {
+      "id": "c4-018",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他们在说怎么走。我听着，慢慢松开了攥衣服的手。",
+      "intro": false,
+      "next": "c4-019"
+    },
+    "c4-019": {
+      "id": "c4-019",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "如果就在旁边，过去不用两分钟。",
+      "intro": false,
+      "next": "c4-020"
+    },
+    "c4-020": {
+      "id": "c4-020",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "有人去找你了。你把手机拿好。",
+      "intro": false,
+      "next": "c4-021"
+    },
+    "c4-021": {
+      "id": "c4-021",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "你不来吗？",
+      "intro": false,
+      "next": "c4-022"
+    },
+    "c4-022": {
+      "id": "c4-022",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我看向楼梯。老唐已经把我的衣服接过去，腾出了手。",
+      "intro": false,
+      "next": "c4-023"
+    },
+    "c4-023": {
+      "id": "c4-023",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "我在这边等你。你听得见我，对吧？",
+      "intro": false,
+      "next": "c4-024"
+    },
+    "c4-024": {
+      "id": "c4-024",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他说听得见。",
+      "intro": false,
+      "next": "c4-025"
+    },
+    "c4-025": {
+      "id": "c4-025",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "这句话让我好受了一点。我又问了一遍，他说听得见，你别总问。",
+      "intro": false,
+      "next": "c4-026"
+    },
+    "c4-026": {
+      "id": "c4-026",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "是他平时嫌我烦的口气。我差一点笑出来，嘴角动了一下，又放回去。",
+      "intro": false,
+      "next": "c4-027"
+    },
+    "c4-027": {
+      "id": "c4-027",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "房东回屋搬了把椅子，让我坐在门旁边。椅脚落在地上，他还特意提起来，重新轻轻放了一次。",
+      "intro": false,
+      "time": "20:53",
+      "pressure": 0,
+      "next": "c4-028"
+    },
+    "c4-028": {
+      "id": "c4-028",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我坐下，才发现鞋里一直是湿的。袜子黏着脚趾，刚才竟然一点没觉得。",
+      "intro": false,
+      "next": "c4-029"
+    },
+    "c4-029": {
+      "id": "c4-029",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "老唐蹲下来，拿纸擦我膝盖上的灰。他问撞的是不是昨晚那边，我说不是。",
+      "intro": false,
+      "next": "c4-030"
+    },
+    "c4-030": {
+      "id": "c4-030",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他说那就好，又觉得这话不太对，没接着说。",
+      "intro": false,
+      "next": "c4-031"
+    },
+    "c4-031": {
+      "id": "c4-031",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我把手机换到另一只手。电还够。充电宝在外套兜里，线也在。",
+      "intro": false,
+      "next": "c4-032"
+    },
+    "c4-032": {
+      "id": "c4-032",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "至少不会因为这个断掉。",
+      "intro": false,
+      "next": "c4-033"
+    },
+    "c4-033": {
+      "id": "c4-033",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "隔壁有开门声。有人探头问怎么了，房东过去说在找人，让他出门时帮忙留意一个年轻人。",
+      "intro": false,
+      "next": "c4-034"
+    },
+    "c4-034": {
+      "id": "c4-034",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "那人问穿什么。我一下没答上来。",
+      "intro": false,
+      "next": "c4-035"
+    },
+    "c4-035": {
+      "id": "c4-035",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我知道陈屿以前爱穿哪件外套，却不知道他今天穿了什么。",
+      "intro": false,
+      "next": "c4-036"
+    },
+    "c4-036": {
+      "id": "c4-036",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "你穿的什么颜色？他们找你好认。",
+      "intro": false,
+      "next": "c4-037"
+    },
+    "c4-037": {
+      "id": "c4-037",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "黑的。拉链那件。",
+      "intro": false,
+      "next": "c4-038"
+    },
+    "c4-038": {
+      "id": "c4-038",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我把这句话重复给房东。邻居点了点头，说知道了，提着垃圾袋下楼。",
+      "intro": false,
+      "next": "c4-039"
+    },
+    "c4-039": {
+      "id": "c4-039",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "楼梯上有塑料袋碰到裤腿的声音，一层一层往下去了。",
+      "intro": false,
+      "next": "c4-040"
+    },
+    "c4-040": {
+      "id": "c4-040",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我没有跟着数。这次知道是谁。",
+      "intro": false,
+      "next": "c4-041"
+    },
+    "c4-041": {
+      "id": "c4-041",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "出去的那名民警打来电话。旁边单元的五楼没有人，他看过门和窗的位置，跟照片对不上，还要继续看另一边。",
+      "intro": false,
+      "time": "20:56",
+      "pressure": 1,
+      "next": "c4-042"
+    },
+    "c4-042": {
+      "id": "c4-042",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "留下的民警把这句话告诉房东。我听见“对不上”，刚抬起头，他便接着问这里还有没有别的楼梯入口。",
+      "intro": false,
+      "next": "c4-043"
+    },
+    "c4-043": {
+      "id": "c4-043",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "房东说这边只有这一个，另一侧的走向也不一样。他拿过手机，指着照片里的窗框比画。",
+      "intro": false,
+      "next": "c4-044"
+    },
+    "c4-044": {
+      "id": "c4-044",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "这次他看得久了些。",
+      "intro": false,
+      "next": "c4-045"
+    },
+    "c4-045": {
+      "id": "c4-045",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "房东",
+      "text": "按这个方向，是我们这边。",
+      "intro": false,
+      "next": "c4-046"
+    },
+    "c4-046": {
+      "id": "c4-046",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我没说话，抬头看了一眼对面的窗。",
+      "intro": false,
+      "next": "c4-047"
+    },
+    "c4-047": {
+      "id": "c4-047",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "民警把手机还给我，说照片先留着，拍的是这里，也要接着确认人现在在哪里。",
+      "intro": false,
+      "next": "c4-048"
+    },
+    "c4-048": {
+      "id": "c4-048",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我看着聊天里刚收到的那张图。发送时间就在几分钟前。",
+      "intro": false,
+      "next": "c4-049"
+    },
+    "c4-049": {
+      "id": "c4-049",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "几分钟前，这扇门已经开了。",
+      "intro": false,
+      "next": "c4-050"
+    },
+    "c4-050": {
+      "id": "c4-050",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我把这句话咽了回去。陈屿还在听，我不想再跟他争一次开没开。",
+      "intro": false,
+      "next": "c4-051"
+    },
+    "c4-051": {
+      "id": "c4-051",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "你能看见楼梯吗？不用拍了，你自己看一下。",
+      "intro": false,
+      "next": "c4-052"
+    },
+    "c4-052": {
+      "id": "c4-052",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "能。",
+      "intro": false,
+      "next": "c4-053"
+    },
+    "c4-053": {
+      "id": "c4-053",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "那你先离门远一点，走到楼梯那里。",
+      "intro": false,
+      "next": "c4-054"
+    },
+    "c4-054": {
+      "id": "c4-054",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他没有马上答应。我听见衣服摩擦，接着是鞋底挪动的一点声音。",
+      "intro": false,
+      "next": "c4-055"
+    },
+    "c4-055": {
+      "id": "c4-055",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "这里？",
+      "intro": false,
+      "next": "c4-056"
+    },
+    "c4-056": {
+      "id": "c4-056",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "对。扶着栏杆，先别急。",
+      "intro": false,
+      "next": "c4-057"
+    },
+    "c4-057": {
+      "id": "c4-057",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我说完才反应过来，自己根本看不见他。我赶紧补了一句，问他有没有摸到栏杆。",
+      "intro": false,
+      "next": "c4-058"
+    },
+    "c4-058": {
+      "id": "c4-058",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他说摸到了。铁的，很凉。",
+      "intro": false,
+      "next": "c4-059"
+    },
+    "c4-059": {
+      "id": "c4-059",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我也把手搭在旁边的栏杆上。握了一会儿，才发现自己在做什么。",
+      "intro": false,
+      "next": "c4-060"
+    },
+    "c4-060": {
+      "id": "c4-060",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "往下走吧。慢一点。",
+      "intro": false,
+      "next": "c4-061"
+    },
+    "c4-061": {
+      "id": "c4-061",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "你一直说话。",
+      "intro": false,
+      "next": "c4-062"
+    },
+    "c4-062": {
+      "id": "c4-062",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "行。我陪着你。",
+      "intro": false,
+      "next": "c4-063"
+    },
+    "c4-063": {
+      "id": "c4-063",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我站起来，走到第一阶旁边。民警往楼下看了一眼，老唐跟了过来。",
+      "intro": false,
+      "next": "c4-064"
+    },
+    "c4-064": {
+      "id": "c4-064",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "不用再开门了。只要他肯下楼，我们总能在下面接住他。",
+      "intro": false,
+      "next": "c4-065"
+    },
+    "c4-065": {
+      "id": "c4-065",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我告诉他扶稳，脚先踩实了，再迈下一步。",
+      "intro": true,
+      "scene": "black",
+      "place": "五楼楼梯口",
+      "time": "20:58",
+      "ambience": "hush",
+      "pressure": 1,
+      "camera": "wide",
+      "next": "c4-066"
+    },
+    "c4-066": {
+      "id": "c4-066",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "说完一句，我就等他答一句。走了吗，嗯。到下一阶了吗，到了。",
+      "intro": false,
+      "next": "c4-067"
+    },
+    "c4-067": {
+      "id": "c4-067",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "楼下传来关门声。我屏住气，等着听后面的脚步。",
+      "intro": false,
+      "next": "c4-068"
+    },
+    "c4-068": {
+      "id": "c4-068",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "没有往上走的。那声关门也不一定是我们这层传下去的。",
+      "intro": false,
+      "next": "c4-069"
+    },
+    "c4-069": {
+      "id": "c4-069",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "明远。",
+      "intro": false,
+      "next": "c4-070"
+    },
+    "c4-070": {
+      "id": "c4-070",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "我在。",
+      "intro": false,
+      "next": "c4-071"
+    },
+    "c4-071": {
+      "id": "c4-071",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "你别一会儿让我走，一会儿又让我等。",
+      "intro": false,
+      "next": "c4-072"
+    },
+    "c4-072": {
+      "id": "c4-072",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我低头看手机。屏幕还在通话界面，没有新消息。",
+      "intro": false,
+      "next": "c4-073"
+    },
+    "c4-073": {
+      "id": "c4-073",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "我没让你等。你慢慢下，我就在电话里。",
+      "intro": false,
+      "next": "c4-074"
+    },
+    "c4-074": {
+      "id": "c4-074",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他说刚才听见了。我看向老唐，老唐摇头。",
+      "intro": false,
+      "next": "c4-075"
+    },
+    "c4-075": {
+      "id": "c4-075",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "可能有点延迟。你先听清再走。",
+      "intro": false,
+      "next": "c4-076"
+    },
+    "c4-076": {
+      "id": "c4-076",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我特意说得很慢。民警示意我别再催，让陈屿先站稳。",
+      "intro": false,
+      "next": "c4-077"
+    },
+    "c4-077": {
+      "id": "c4-077",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我照着说了，问他现在到哪儿了。",
+      "intro": false,
+      "next": "c4-078"
+    },
+    "c4-078": {
+      "id": "c4-078",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "还在这里。",
+      "intro": false,
+      "next": "c4-079"
+    },
+    "c4-079": {
+      "id": "c4-079",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我拿着手机的手往下落了一点。老唐伸手托住，怕我没拿稳。",
+      "intro": false,
+      "next": "c4-080"
+    },
+    "c4-080": {
+      "id": "c4-080",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "刚才不是往下走了吗？",
+      "intro": false,
+      "next": "c4-081"
+    },
+    "c4-081": {
+      "id": "c4-081",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "走了两级。我听见你叫我，就停了。",
+      "intro": false,
+      "next": "c4-082"
+    },
+    "c4-082": {
+      "id": "c4-082",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我想起刚才那声“明远”。是他在叫我，我才回答的。",
+      "intro": false,
+      "next": "c4-083"
+    },
+    "c4-083": {
+      "id": "c4-083",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "民警问他是不是开着免提，有没有别的设备也在通话。他说没有，手机一直贴着耳朵。",
+      "intro": false,
+      "next": "c4-084"
+    },
+    "c4-084": {
+      "id": "c4-084",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "我没弄别的。我怕听不清。",
+      "intro": false,
+      "next": "c4-085"
+    },
+    "c4-085": {
+      "id": "c4-085",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我也怕。我恨不得把每个字都按在屏幕上，发过去，让他照着读。",
+      "intro": false,
+      "next": "c4-086"
+    },
+    "c4-086": {
+      "id": "c4-086",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "那我们先不走。你站稳，我不催你。",
+      "intro": false,
+      "next": "c4-087"
+    },
+    "c4-087": {
+      "id": "c4-087",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他说好。这一次，答得很快。",
+      "intro": false,
+      "next": "c4-088"
+    },
+    "c4-088": {
+      "id": "c4-088",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我回到门边。老唐把椅子让开，我却没坐，站在原地把手机握了又握。",
+      "intro": false,
+      "next": "c4-089"
+    },
+    "c4-089": {
+      "id": "c4-089",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "房东正在给出去的民警说明楼栋的位置。能听见他的声音，也能听见电话里陈屿的呼吸。",
+      "intro": false,
+      "scene": "hallway-open",
+      "place": "502门口",
+      "time": "21:00",
+      "ambience": "hush",
+      "pressure": 2,
+      "camera": "wide",
+      "next": "c4-090"
+    },
+    "c4-090": {
+      "id": "c4-090",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我把免提音量减了一格，离房东远了些。",
+      "intro": false,
+      "next": "c4-091"
+    },
+    "c4-091": {
+      "id": "c4-091",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "陈屿，刚才说等一下的，是从手机里听见的吗？",
+      "intro": false,
+      "next": "c4-092"
+    },
+    "c4-092": {
+      "id": "c4-092",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他停了一会儿。",
+      "intro": false,
+      "next": "c4-093"
+    },
+    "c4-093": {
+      "id": "c4-093",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "门里面。",
+      "intro": false,
+      "next": "c4-094"
+    },
+    "c4-094": {
+      "id": "c4-094",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我的手指压在音量键上，没有再往下按。",
+      "intro": false,
+      "next": "c4-095"
+    },
+    "c4-095": {
+      "id": "c4-095",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "你先别管那个。现在只听电话。",
+      "intro": false,
+      "next": "c4-096"
+    },
+    "c4-096": {
+      "id": "c4-096",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我没问像不像我的声音。那句“有人叫我”从聊天里浮上来，我强迫自己先看着眼前。",
+      "intro": false,
+      "next": "c4-097"
+    },
+    "c4-097": {
+      "id": "c4-097",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "敞开的门，纸箱，椅子。房东站在玄关边，正在说五号楼。",
+      "intro": false,
+      "next": "c4-098"
+    },
+    "c4-098": {
+      "id": "c4-098",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我看得见的地方，没有人在跟他说话。",
+      "intro": false,
+      "next": "c4-099"
+    },
+    "c4-099": {
+      "id": "c4-099",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "民警看了看我，让我先停一停，说可能几个人说话混在一起了。他示意老唐也先别出声。",
+      "intro": false,
+      "next": "c4-100"
+    },
+    "c4-100": {
+      "id": "c4-100",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "我停十秒。你不用动，等我再跟你说。",
+      "intro": false,
+      "next": "c4-101"
+    },
+    "c4-101": {
+      "id": "c4-101",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "别挂。",
+      "intro": false,
+      "next": "c4-102"
+    },
+    "c4-102": {
+      "id": "c4-102",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "不挂。我听着。",
+      "intro": false,
+      "next": "c4-103"
+    },
+    "c4-103": {
+      "id": "c4-103",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我把麦克风关了，递给身边的民警看。关掉的只是我这边的声音，陈屿那边还听得见。",
+      "intro": false,
+      "next": "c4-104"
+    },
+    "c4-104": {
+      "id": "c4-104",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他点了点头。我把手机拿回来，盯着那个划了线的话筒。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phoneStatus": "通话中 · 麦克风已关闭",
+      "holdPhone": true,
+      "pressure": 2,
+      "next": "c4-105"
+    },
+    "c4-105": {
+      "id": "c4-105",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我用拇指一下下碰着裤缝。数到四的时候，陈屿吸了口气。",
+      "intro": false,
+      "next": "c4-106"
+    },
+    "c4-106": {
+      "id": "c4-106",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我差一点开口，忍住了。",
+      "intro": false,
+      "next": "c4-107"
+    },
+    "c4-107": {
+      "id": "c4-107",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "房东还在低声通话。我往另一边站了半步，看着屏幕，接着数。",
+      "intro": false,
+      "next": "c4-108"
+    },
+    "c4-108": {
+      "id": "c4-108",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "数到十。我没有马上把麦克风打开。",
+      "intro": false,
+      "next": "c4-109"
+    },
+    "c4-109": {
+      "id": "c4-109",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "好。",
+      "intro": false,
+      "next": "c4-110"
+    },
+    "c4-110": {
+      "id": "c4-110",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我抬起头。老唐正看着我，没有说话。",
+      "intro": false,
+      "next": "c4-111"
+    },
+    "c4-111": {
+      "id": "c4-111",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "我等你。你慢点。",
+      "intro": false,
+      "next": "c4-112"
+    },
+    "c4-112": {
+      "id": "c4-112",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我点了一下麦克风，第一下没点中，又点。",
+      "intro": false,
+      "next": "c4-113"
+    },
+    "c4-113": {
+      "id": "c4-113",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "图标上的斜线没了。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phoneStatus": "通话中",
+      "pressure": 3,
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 900
+      },
+      "next": "c4-114"
+    },
+    "c4-114": {
+      "id": "c4-114",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "你等谁？",
+      "intro": false,
+      "next": "c4-115"
+    },
+    "c4-115": {
+      "id": "c4-115",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "他像是没听懂。",
+      "intro": false,
+      "next": "c4-116"
+    },
+    "c4-116": {
+      "id": "c4-116",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "等你啊。",
+      "intro": false,
+      "next": "c4-117"
+    },
+    "c4-117": {
+      "id": "c4-117",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我把手机从脸旁边拿远一点，又拿回来。民警往前走了半步，想听清他的下一句。",
+      "intro": false,
+      "next": "c4-118"
+    },
+    "c4-118": {
+      "id": "c4-118",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "陈屿 · 电话",
+      "text": "你不是说，现在出来吗？",
+      "intro": false,
+      "next": "c4-119"
+    },
+    "c4-119": {
+      "id": "c4-119",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我的视线越过屏幕，落在敞开的门口。",
+      "intro": false,
+      "next": "c4-120"
+    },
+    "c4-120": {
+      "id": "c4-120",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "纸箱还抵在那里。老唐的手就在门边。",
+      "intro": false,
+      "next": "c4-121"
+    },
+    "c4-121": {
+      "id": "c4-121",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "我想让陈屿先别等，话到了嘴边，又怕他照着谁的话往前走。",
+      "intro": false,
+      "next": "c4-122"
+    },
+    "c4-122": {
+      "id": "c4-122",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "张明远 · 电话",
+      "text": "你拿好手机。先别挂。",
+      "intro": false,
       "next": "end"
     },
     "end": {
       "id": "end",
       "end": true,
-      "text": "前三章 · 完"
+      "text": "前四章 · 完"
     }
   }
 };if(typeof module!=='undefined'&&module.exports)module.exports=story;else root.HCStory=story;})(typeof globalThis!=='undefined'?globalThis:this);
