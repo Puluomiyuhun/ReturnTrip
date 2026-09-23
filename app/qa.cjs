@@ -82,6 +82,7 @@ module.exports=async function(win){
  const fifthMessage=await js(`Object.values(HCStory.nodes).find(n=>n.id.startsWith('c5-')&&n.phone?.some(p=>p[1]==='现在没声音了')).id`);
  await js(`qaGoto(${JSON.stringify(fifthMessage)})`);await capture('chapter5-message');
  assert.equal(await js(`(()=>{const phone=document.getElementById('phone'),bubble=phone.querySelector('.bubble');return bubble.textContent==='现在没声音了'&&bubble.getBoundingClientRect().bottom<=phone.getBoundingClientRect().bottom;})()`),true);
+ await require('./message-order-qa.cjs')({js,capture,pause});
  const reaction=await js(`(()=>{const m=HCModel.createModel(HCStory),found=[];while(!m.node().end){if(m.presentation().heldPhone&&!m.node().phone)found.push(m.node());m.next();}return found.sort((a,b)=>b.text.length-a.text.length)[0].id;})()`);
  await js(`qaGoto(${JSON.stringify(reaction)})`);
  const held=await js(`(()=>{const phone=document.getElementById('phone'),dialogue=document.getElementById('dialogue');return {shown:!phone.hidden,gap:dialogue.getBoundingClientRect().top-phone.getBoundingClientRect().bottom,focus:document.getElementById('app').dataset.focus};})()`);

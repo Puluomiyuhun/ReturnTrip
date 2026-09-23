@@ -2,6 +2,7 @@
 (() => {
  'use strict';
  const $=id=>document.getElementById(id);
+ const voiceKey=name=>[['张明远','mingyuan'],['陈屿','chen'],['老唐','tang'],['房东','landlord'],['李哲','lizhe'],['录音中的声音','recording']].find(([who])=>(name||'').startsWith(who))?.[1]||'narrator';
  const story=window.HCStory, model=window.HCModel.createModel(story);
  const STORAGE='huicheng.chapters.v09.';
  const prefs={speed:32,size:30,volume:30,delay:3,mute:false,typeScale:3,staging:true};
@@ -126,6 +127,7 @@
    const phone=n.phone||p.heldPhone?.lines;
    $('app').dataset.phoneCarry=String(!n.phone&&!!p.heldPhone);
    const phoneStatus=n.phoneStatus||p.heldStatus?.status;
+   $('dialogue').dataset.voice=voiceKey(n.speaker);$('phone').dataset.voice=voiceKey(n.phoneTitle||p.heldPhone?.title||p.heldStatus?.title);
    $('speaker').textContent=n.speaker||'';$('speaker').hidden=!n.speaker;$('phone').hidden=!(phone||phoneStatus);$('phone').querySelector('b').textContent=n.phoneTitle||p.heldPhone?.title||p.heldStatus?.title||'陈屿';$('dialogue').classList.toggle('sound-beat',!!n.beat);$('phone-lines').replaceChildren();
    if(phoneStatus){const status=document.createElement('div');status.className='call-status';status.textContent=phoneStatus;$('phone-lines').append(status);}
    if(phone){for(const [speaker,text]of phone){const bubble=document.createElement('div');bubble.className='bubble'+(speaker==='我'?' me':'');bubble.textContent=text;$('phone-lines').append(bubble);}$('phone').scrollTop=0;}
@@ -153,7 +155,7 @@
    const body=openPanel('回看','MEMORIES / 已经读过的文字');
    paragraph('这里保留本次已读的对白与手机消息。',body);
    for(const n of model.history()){
-     if(n.end)continue;const row=document.createElement('article');row.className='log-entry';if(n.speaker){const who=document.createElement('small');who.textContent=n.speaker;row.append(who);}if(n.phone){const label=document.createElement('small');label.textContent='与'+(n.phoneTitle||'陈屿')+'的消息';row.append(label);for(const [who,words] of n.phone)paragraph(who+'：'+words,row,'log-message');}if(n.phoneStatus)paragraph((n.phoneTitle||'陈屿')+' · '+n.phoneStatus,row,'log-message');paragraph(n.text,row,'');if(n.evidence)button('查看照片',()=>showEvidence(n.evidence),row);body.append(row);
+     if(n.end)continue;const row=document.createElement('article');row.className='log-entry';row.dataset.voice=voiceKey(n.speaker||n.phoneTitle);if(n.speaker){const who=document.createElement('small');who.textContent=n.speaker;row.append(who);}const unreadLines=n.phone?.slice(n.noticeBefore?story.nodes[n.noticeBefore].phone?.length||0:0);if(unreadLines?.length){const label=document.createElement('small');label.textContent='与'+(n.phoneTitle||'陈屿')+'的消息';row.append(label);for(const [who,words] of unreadLines)paragraph(who+'：'+words,row,'log-message');}if(n.phoneStatus&&!n.noticeBefore)paragraph((n.phoneTitle||'陈屿')+' · '+n.phoneStatus,row,'log-message');paragraph(n.text,row,'');if(n.evidence)button('查看照片',()=>showEvidence(n.evidence),row);body.append(row);
    }
    requestAnimationFrame(()=>$('panel').scrollTop=$('panel').scrollHeight);
  }

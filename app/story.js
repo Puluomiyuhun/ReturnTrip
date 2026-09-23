@@ -87,6 +87,31 @@
       "speaker": "",
       "text": "我把明早的闹钟调大了一格，给陈屿回消息。",
       "intro": false,
+      "next": "c1-007-notice"
+    },
+    "c1-007-notice": {
+      "id": "c1-007-notice",
+      "chapter": "第一章 · 明天见",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "新家收拾好了？"
+        ],
+        [
+          "我",
+          "差不多。卧室跟内舱一样，睡醒不知道船开到哪了。"
+        ]
+      ],
+      "sound": "message",
+      "noticeFor": "c1-007",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c1-007"
     },
     "c1-007": {
@@ -106,7 +131,31 @@
           "差不多。卧室跟内舱一样，睡醒不知道船开到哪了。"
         ]
       ],
-      "sound": "message",
+      "noticeBefore": "c1-007-notice",
+      "next": "c1-008-notice"
+    },
+    "c1-008-notice": {
+      "id": "c1-008-notice",
+      "chapter": "第一章 · 明天见",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "先把闹钟设好。别又一睁眼下午两点。"
+        ],
+        [
+          "我",
+          "就那一次，你准备说多少年。"
+        ]
+      ],
+      "noticeFor": "c1-008",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c1-008"
     },
     "c1-008": {
@@ -126,6 +175,35 @@
           "就那一次，你准备说多少年。"
         ]
       ],
+      "noticeBefore": "c1-008-notice",
+      "next": "c1-009-notice"
+    },
+    "c1-009-notice": {
+      "id": "c1-009-notice",
+      "chapter": "第一章 · 明天见",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "明晚七点半，老地方？"
+        ],
+        [
+          "我",
+          "行。等你到了再点。"
+        ],
+        [
+          "陈屿",
+          "这回我请。"
+        ]
+      ],
+      "noticeFor": "c1-009",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c1-009"
     },
     "c1-009": {
@@ -149,6 +227,39 @@
           "这回我请。"
         ]
       ],
+      "noticeBefore": "c1-009-notice",
+      "next": "c1-010-notice"
+    },
+    "c1-010-notice": {
+      "id": "c1-010-notice",
+      "chapter": "第一章 · 明天见",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "我",
+          "吃完可以上来坐坐。椅子有，被我压在箱子底下了。"
+        ],
+        [
+          "陈屿",
+          "不用搬。到时候再说。"
+        ],
+        [
+          "我",
+          "明天见。"
+        ],
+        [
+          "陈屿",
+          "明天见。"
+        ]
+      ],
+      "noticeFor": "c1-010",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c1-010"
     },
     "c1-010": {
@@ -176,6 +287,7 @@
           "明天见。"
         ]
       ],
+      "noticeBefore": "c1-010-notice",
       "next": "c1-011"
     },
     "c1-011": {
@@ -788,13 +900,13 @@
           "醒着吗？我家里有点不对劲，今晚想借你沙发。"
         ]
       ],
-      "next": "c1-078"
+      "next": "c1-078-notice"
     },
-    "c1-078": {
-      "id": "c1-078",
+    "c1-078-notice": {
+      "id": "c1-078-notice",
       "chapter": "第一章 · 明天见",
       "speaker": "",
-      "text": "手机震了一下。",
+      "text": "……",
       "intro": false,
       "phoneTitle": "陈屿",
       "phone": [
@@ -811,8 +923,30 @@
         "leadMs": 1500,
         "holdMs": 2400,
         "focusPhone": true,
-        "duck": true
+        "duck": true,
+        "hideText": true,
+        "soundOnReveal": true
       },
+      "noticeFor": "c1-078",
+      "next": "c1-078"
+    },
+    "c1-078": {
+      "id": "c1-078",
+      "chapter": "第一章 · 明天见",
+      "speaker": "",
+      "text": "我低头看着屏幕。",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "你出来了？"
+        ]
+      ],
+      "pressure": 3,
+      "focus": "phone",
+      "holdPhone": true,
+      "noticeBefore": "c1-078-notice",
       "next": "c1-079"
     },
     "c1-079": {
@@ -1002,6 +1136,21 @@
       "speaker": "",
       "text": "声音落在客厅里。我闭上嘴，把手机贴得更紧。",
       "intro": false,
+      "next": "c1-098-notice"
+    },
+    "c1-098-notice": {
+      "id": "c1-098-notice",
+      "chapter": "第一章 · 明天见",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phoneStatus": "对方未接听",
+      "noticeFor": "c1-098",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c1-098"
     },
     "c1-098": {
@@ -1012,6 +1161,7 @@
       "intro": false,
       "phoneTitle": "陈屿",
       "phoneStatus": "对方未接听",
+      "noticeBefore": "c1-098-notice",
       "next": "c1-099"
     },
     "c1-099": {
@@ -1035,6 +1185,28 @@
       "speaker": "",
       "text": "我想起今晚那句“吃完上来坐坐”。当时发得那么随便，现在却希望自己没有发过地址。",
       "intro": false,
+      "next": "c1-101-notice"
+    },
+    "c1-101-notice": {
+      "id": "c1-101-notice",
+      "chapter": "第一章 · 明天见",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "老唐",
+      "phone": [
+        [
+          "老唐",
+          "醒着，刚洗完澡。你人在哪？"
+        ]
+      ],
+      "sound": "message",
+      "pressure": 2,
+      "noticeFor": "c1-101",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c1-101"
     },
     "c1-101": {
@@ -1050,8 +1222,8 @@
           "醒着，刚洗完澡。你人在哪？"
         ]
       ],
-      "sound": "message",
       "pressure": 2,
+      "noticeBefore": "c1-101-notice",
       "next": "c1-102"
     },
     "c1-102": {
@@ -1842,6 +2014,28 @@
       "speaker": "",
       "text": "我又朝门口看了一眼。只要他来，骂完也行。",
       "intro": false,
+      "next": "c2-056-notice"
+    },
+    "c2-056-notice": {
+      "id": "c2-056-notice",
+      "chapter": "第二章 · 等一会儿",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "明远，你现在别回家。"
+        ]
+      ],
+      "sound": "message",
+      "pressure": 2,
+      "noticeFor": "c2-056",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c2-056"
     },
     "c2-056": {
@@ -1857,8 +2051,8 @@
           "明远，你现在别回家。"
         ]
       ],
-      "sound": "message",
       "pressure": 2,
+      "noticeBefore": "c2-056-notice",
       "next": "c2-057"
     },
     "c2-057": {
@@ -1867,6 +2061,26 @@
       "speaker": "",
       "text": "我立刻按语音通话。没有接通，消息又进来了一条。",
       "intro": false,
+      "next": "c2-058-notice"
+    },
+    "c2-058-notice": {
+      "id": "c2-058-notice",
+      "chapter": "第二章 · 等一会儿",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "我在你家门口。"
+        ]
+      ],
+      "noticeFor": "c2-058",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c2-058"
     },
     "c2-058": {
@@ -1890,6 +2104,7 @@
           "接电话。"
         ]
       ],
+      "noticeBefore": "c2-058-notice",
       "next": "c2-059"
     },
     "c2-059": {
@@ -1906,6 +2121,31 @@
       "speaker": "",
       "text": "早上刚换的锁。他进不去。",
       "intro": false,
+      "next": "c2-061-notice"
+    },
+    "c2-061-notice": {
+      "id": "c2-061-notice",
+      "chapter": "第二章 · 等一会儿",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "里面有声音。"
+        ],
+        [
+          "陈屿",
+          "有人叫我。"
+        ]
+      ],
+      "sound": "message",
+      "noticeFor": "c2-061",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c2-061"
     },
     "c2-061": {
@@ -1925,7 +2165,7 @@
           "有人叫我。"
         ]
       ],
-      "sound": "message",
+      "noticeBefore": "c2-061-notice",
       "next": "c2-062"
     },
     "c2-062": {
@@ -2424,6 +2664,22 @@
       "speaker": "",
       "text": "我捏着手机，才发现刚才那通电话还没挂。",
       "intro": false,
+      "next": "c2-119-notice"
+    },
+    "c2-119-notice": {
+      "id": "c2-119-notice",
+      "chapter": "第二章 · 等一会儿",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phoneStatus": "通话中 · 00:01",
+      "sound": "connect",
+      "noticeFor": "c2-119",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c2-119"
     },
     "c2-119": {
@@ -2434,7 +2690,7 @@
       "intro": false,
       "phoneTitle": "陈屿",
       "phoneStatus": "通话中 · 00:01",
-      "sound": "connect",
+      "noticeBefore": "c2-119-notice",
       "next": "c2-120"
     },
     "c2-120": {
@@ -2785,6 +3041,22 @@
       "speaker": "",
       "text": "我把手机压紧，叫了两声。没有回应。",
       "intro": false,
+      "next": "c3-030-notice"
+    },
+    "c3-030-notice": {
+      "id": "c3-030-notice",
+      "chapter": "第三章 · 门开着",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phoneStatus": "通话已结束",
+      "pressure": 2,
+      "noticeFor": "c3-030",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c3-030"
     },
     "c3-030": {
@@ -2796,6 +3068,7 @@
       "phoneTitle": "陈屿",
       "phoneStatus": "通话已结束",
       "pressure": 2,
+      "noticeBefore": "c3-030-notice",
       "next": "c3-031"
     },
     "c3-031": {
@@ -3353,6 +3626,24 @@
       "speaker": "",
       "text": "手机在这时响了。",
       "intro": false,
+      "next": "c3-097-notice"
+    },
+    "c3-097-notice": {
+      "id": "c3-097-notice",
+      "chapter": "第三章 · 门开着",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phoneStatus": "来电",
+      "sound": "call",
+      "pressure": 1,
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 700,
+        "hideText": true
+      },
+      "noticeFor": "c3-097",
       "next": "c3-097"
     },
     "c3-097": {
@@ -3363,12 +3654,8 @@
       "intro": false,
       "phoneTitle": "陈屿",
       "phoneStatus": "来电",
-      "sound": "call",
       "pressure": 1,
-      "staging": {
-        "leadMs": 0,
-        "holdMs": 700
-      },
+      "noticeBefore": "c3-097-notice",
       "next": "c3-098"
     },
     "c3-098": {
@@ -3853,6 +4140,31 @@
       "speaker": "",
       "text": "我切回聊天。刚才那几条消息下面，多了一张图。",
       "intro": false,
+      "next": "c4-007-notice"
+    },
+    "c4-007-notice": {
+      "id": "c4-007-notice",
+      "chapter": "第四章 · 先别挂",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "[照片] 门口"
+        ]
+      ],
+      "evidence": {
+        "src": "assets/hallway.png",
+        "title": "陈屿发来的门口照片",
+        "alt": "亮灯的旧楼楼道，右侧502房门关闭，左侧是楼梯与窗户。"
+      },
+      "noticeFor": "c4-007",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c4-007"
     },
     "c4-007": {
@@ -3873,6 +4185,7 @@
         "title": "陈屿发来的门口照片",
         "alt": "亮灯的旧楼楼道，右侧502房门关闭，左侧是楼梯与窗户。"
       },
+      "noticeBefore": "c4-007-notice",
       "next": "c4-008"
     },
     "c4-008": {
@@ -4980,6 +5293,26 @@
       "speaker": "",
       "text": "下面很快多了一个字。",
       "intro": false,
+      "next": "c5-018-notice"
+    },
+    "c5-018-notice": {
+      "id": "c5-018-notice",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "好"
+        ]
+      ],
+      "noticeFor": "c5-018",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c5-018"
     },
     "c5-018": {
@@ -4995,6 +5328,7 @@
           "好"
         ]
       ],
+      "noticeBefore": "c5-018-notice",
       "next": "c5-019"
     },
     "c5-019": {
@@ -5212,6 +5546,22 @@
       "speaker": "",
       "text": "他嗯了一声。又等了一会儿，通话条才不见。",
       "intro": false,
+      "next": "c5-045-notice"
+    },
+    "c5-045-notice": {
+      "id": "c5-045-notice",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phoneStatus": "通话已结束",
+      "pressure": 1,
+      "noticeFor": "c5-045",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c5-045"
     },
     "c5-045": {
@@ -5223,6 +5573,7 @@
       "phoneTitle": "陈屿",
       "phoneStatus": "通话已结束",
       "pressure": 1,
+      "noticeBefore": "c5-045-notice",
       "next": "c5-046"
     },
     "c5-046": {
@@ -5231,6 +5582,26 @@
       "speaker": "",
       "text": "一秒。两秒。",
       "intro": false,
+      "next": "c5-047-notice"
+    },
+    "c5-047-notice": {
+      "id": "c5-047-notice",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "好"
+        ]
+      ],
+      "noticeFor": "c5-047",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c5-047"
     },
     "c5-047": {
@@ -5246,6 +5617,7 @@
           "好"
         ]
       ],
+      "noticeBefore": "c5-047-notice",
       "next": "c5-048"
     },
     "c5-048": {
@@ -5326,6 +5698,27 @@
       "speaker": "",
       "text": "再等两秒。",
       "intro": false,
+      "next": "c5-057-notice"
+    },
+    "c5-057-notice": {
+      "id": "c5-057-notice",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "[语音 · 24秒]"
+        ]
+      ],
+      "pressure": 1,
+      "noticeFor": "c5-057",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c5-057"
     },
     "c5-057": {
@@ -5342,6 +5735,7 @@
         ]
       ],
       "pressure": 1,
+      "noticeBefore": "c5-057-notice",
       "next": "c5-058"
     },
     "c5-058": {
@@ -5555,6 +5949,27 @@
       "speaker": "",
       "text": "我点下播放，没把进度往回拖。",
       "intro": false,
+      "next": "c5-084-notice"
+    },
+    "c5-084-notice": {
+      "id": "c5-084-notice",
+      "chapter": "第五章 · 你听一下",
+      "speaker": "",
+      "text": "……",
+      "intro": false,
+      "phoneTitle": "陈屿",
+      "phone": [
+        [
+          "陈屿",
+          "听见了吗"
+        ]
+      ],
+      "pressure": 2,
+      "noticeFor": "c5-084",
+      "staging": {
+        "leadMs": 0,
+        "holdMs": 800
+      },
       "next": "c5-084"
     },
     "c5-084": {
@@ -5571,6 +5986,7 @@
         ]
       ],
       "pressure": 2,
+      "noticeBefore": "c5-084-notice",
       "next": "c5-085"
     },
     "c5-085": {

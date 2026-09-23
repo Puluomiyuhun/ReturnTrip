@@ -31,11 +31,15 @@
      // Earlier chapters retain their IDs; migrate only each release's complete valid prefix.
      if(story.id==='huicheng-chapters-v09'&&['huicheng-chapters-v07','huicheng-chapters-v08'].includes(data?.story)&&data.version===1&&Array.isArray(data.path)){
        const legacy=[...data.path];
-       const is07=data.story==='huicheng-chapters-v07',endpoint=is07?'c3-147':'c4-122',allowed=is07?/^c[123]-\d{3}$/:/^c[1234]-\d{3}$/;
+       const is07=data.story==='huicheng-chapters-v07',endpoint=is07?'c3-147':'c4-122',allowed=is07?/^c[123]-\d{3}(?:-notice)?$/:/^c[1234]-\d{3}(?:-notice)?$/;
        if(legacy.at(-1)==='end'&&legacy.at(-2)===endpoint)legacy.pop();
-       if(legacy.every(id=>allowed.test(id)))return {...data,story:story.id,path:legacy};
+       if(legacy.every(id=>allowed.test(id)))data={...data,story:story.id,path:legacy};
      }
      if(story.id==='huicheng-chapter1-v1' && story.start==='chapter1-intro-1' && data?.story===story.id && data.version===story.version && Array.isArray(data.path) && data.path[0]==='chapter1-000')return {...data,path:['chapter1-intro-1','chapter1-intro-2',...data.path]};
+     if(data?.story===story.id&&data.version===story.version&&Array.isArray(data.path)){
+       const expanded=[];for(const id of data.path){const prefix=story.nodes[id]?.noticeBefore;if(prefix&&expanded.at(-1)!==prefix)expanded.push(prefix);expanded.push(id);}
+       return {...data,path:expanded};
+     }
      return data;
    }
    function validate(data){
