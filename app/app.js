@@ -107,13 +107,21 @@
  function saveAuto(){write('auto',{...model.snapshot(),savedAt:Date.now()});updateContinue();}
  function updateContinue(){const data=read('auto');$('continue').disabled=!model.validate(data);}
  function setMode(next){mode=next;$('title-screen').hidden=next!=='title';$('game-screen').hidden=next!=='game';$('ending').hidden=next!=='end';sound.level();}
- function showTitle(){$('app').dataset.intro='false';$('app').dataset.focus='none';clearTimers();sound.duck(false);setAuto(false);sound.cancel();setMode('title');$('scenery').dataset.scene='bedroom-lit';$('chapter').textContent='第一章 · 明天见';updateContinue();$('start').focus();}
+ function showTitle(){$('app').dataset.intro='false';$('app').dataset.focus='none';clearTimers();sound.duck(false);setAuto(false);sound.cancel();setMode('title');paintScene({scene:'bedroom-lit',backgroundScene:'bedroom-lit',backgroundCamera:'wide'},{instant:true});$('chapter').textContent='第一章 · 明天见';updateContinue();$('start').focus();}
  function completeText(){clearInterval(typing);typing=null;typed=fullText.length;$('text').textContent=fullText;$('advance-mark').textContent=model.node().choices||staging?'':'›';$('reading-hint').textContent='';showChoices();scheduleAuto();}
  function showChoices(){const choices=model.node().choices;if(!choices||typing){$('choices').hidden=true;return;}setAuto(false);$('choices').replaceChildren();for(const c of choices){const b=document.createElement('button');b.textContent=c.label;b.addEventListener('click',()=>{sound.init();if(model.choose(c.id)){render();$('dialogue').focus();}});$('choices').append(b);}$('choices').hidden=false;}
+ function paintScene(p,{instant=false,blackout=p.scene==='black'}={}){
+   const el=$('scenery');
+   if(blackout&&!instant&&el.dataset.blackout!=='true'){
+     const style=getComputedStyle(el);el.style.filter=style.filter;el.style.transform=style.transform;
+   }else if(!blackout||instant){el.style.filter='';el.style.transform='';}
+   el.style.transition=instant?'none':blackout?'opacity 1.2s ease':'';
+   el.dataset.scene=p.backgroundScene;el.dataset.camera=p.backgroundCamera;el.dataset.blackout=String(blackout);
+ }
  function render({instant=false,quiet=false}={}){
-   clearTimers();sound.cancel({keepKnocks:!quiet});const n=model.resolved(),p=model.presentation(),timed=!!(!instant&&!quiet&&prefs.staging&&n.staging);$('app').dataset.intro=String(p.scene==='black');$('app').dataset.pressure=String(p.pressure);$('app').dataset.focus=p.focus;$('app').dataset.phoneFocus=String(p.focus==='phone'&&!timed);$('scenery').dataset.camera=p.camera;sound.duck(p.focus==='phone');
-   if(n.end){sound.cancel();setAuto(false);setMode('end');$('scenery').dataset.scene='black';saveAuto();$('ending').querySelector('small').textContent=storageWorking?'本次阅读已保存在自动存档中':'本地存档不可用，可返回回看后导出进度';$('replay').focus();return;}
-   setMode('game');$('scenery').dataset.scene=p.scene;$('place').textContent=p.place;$('time').textContent=p.time;$('chapter').textContent=p.chapter;sound.setAmbience(p.ambience,p.scene);
+   clearTimers();sound.cancel({keepKnocks:!quiet});const n=model.resolved(),p=model.presentation(),timed=!!(!instant&&!quiet&&prefs.staging&&n.staging);$('app').dataset.intro=String(p.scene==='black');$('app').dataset.pressure=String(p.pressure);$('app').dataset.focus=p.focus;$('app').dataset.phoneFocus=String(p.focus==='phone'&&!timed);sound.duck(p.focus==='phone');
+   if(n.end){sound.cancel();setAuto(false);setMode('end');paintScene(p,{instant:instant||quiet,blackout:true});saveAuto();$('ending').querySelector('small').textContent=storageWorking?'本次阅读已保存在自动存档中':'本地存档不可用，可返回回看后导出进度';$('replay').focus();return;}
+   setMode('game');paintScene(p,{instant:instant||quiet});$('place').textContent=p.place;$('time').textContent=p.time;$('chapter').textContent=p.chapter;sound.setAmbience(p.ambience,p.scene);
    $('chapter-card').hidden=!n.card;if(n.card){$('card-kicker').textContent=n.card[0];$('card-title').textContent=n.card[1];$('card-subtitle').textContent=n.card[2];}
    const phone=n.phone||p.heldPhone?.lines;
    $('app').dataset.phoneCarry=String(!n.phone&&!!p.heldPhone);

@@ -52,6 +52,7 @@ module.exports=async function(win){
  assert.equal(await js(`JSON.parse(localStorage.getItem('huicheng.chapters.v08.auto')).path.at(-1)`),evidence);
  await js(`document.getElementById('close-panel').click();document.getElementById('history').click();document.querySelector('#panel-body .log-entry button').click()`);
  assert.equal(await js(`!!document.querySelector('.evidence-image')`),true);await js(`document.getElementById('close-panel').click()`);
+ await require('./blackout-qa.cjs')({js,pause,capture});
  for(const [scene,id] of Object.entries(await js(`Object.fromEntries(['store','restaurant','hallway','living-day','hallway-open'].map(s=>[s,Object.values(HCStory.nodes).find(n=>n.scene===s).id]))`))){
    await js(`qaGoto(${JSON.stringify(id)})`);await pause(2300);await capture(scene);
  }
