@@ -3,9 +3,9 @@
  'use strict';
  const $=id=>document.getElementById(id);
  const story=window.HCStory, model=window.HCModel.createModel(story);
- const STORAGE='huicheng.chapters.v06.';
+ const STORAGE='huicheng.chapters.v07.';
  const prefs={speed:32,size:30,volume:30,delay:3,mute:false,typeScale:3,staging:true};
- let staging=false,stageTimers=[],finishStage=null;
+ let staging=false,stageTimers=[],finishStage=null,textHeld=false;
  let mode='title',typing=null,autoTimer=null,auto=false,toastTimer=null,fullText='',typed=0,lastFocus=null;
  let storageWorking=true;
  function read(key){try{return JSON.parse(localStorage.getItem(STORAGE+key));}catch{return null;}}
@@ -16,24 +16,31 @@
  if(stored && stored.typeScale!==3 && Number.isFinite(stored.size))prefs.size=stored.size+8;
  prefs.speed=Math.max(0,Math.min(65,prefs.speed));prefs.size=Math.max(24,Math.min(40,prefs.size));prefs.volume=Math.max(0,Math.min(70,prefs.volume));prefs.delay=Math.max(1,Math.min(8,prefs.delay));
  function toast(text){$('toast').textContent=text;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2600);}
- const sound={ctx:null,master:null,rain:null,room:null,sources:[],ambience:'quiet',
+ const sound={ctx:null,master:null,rain:null,room:null,sources:[],ambience:'quiet',scene:'black',ducked:false,
    async init(){
      if(!this.ctx){try{
        this.ctx=new (window.AudioContext||window.webkitAudioContext)();
        this.master=this.ctx.createGain();this.master.connect(this.ctx.destination);
-       const buffer=this.ctx.createBuffer(1,this.ctx.sampleRate*4,this.ctx.sampleRate);const d=buffer.getChannelData(0);let previous=0;
+       this.environment=this.ctx.createGain();this.environment.connect(this.master);this.environment.gain.value=this.ducked?.055:1;
+       const buffer=this.ctx.createBuffer(1,this.ctx.sampleRate*8,this.ctx.sampleRate);const d=buffer.getChannelData(0);let previous=0;
        for(let i=0;i<d.length;i++){previous=.94*previous+.06*(Math.random()*2-1);d[i]=previous;}
        const noise=this.ctx.createBufferSource();noise.buffer=buffer;noise.loop=true;
-       const low=this.ctx.createBiquadFilter();low.type='lowpass';low.frequency.value=1100;
-       this.rain=this.ctx.createGain();noise.connect(low);low.connect(this.rain);this.rain.connect(this.master);noise.start();
+       this.rainFilter=this.ctx.createBiquadFilter();this.rainFilter.type='lowpass';this.rainFilter.frequency.value=1100;
+       this.rainPan=this.ctx.createStereoPanner();this.rain=this.ctx.createGain();noise.connect(this.rainFilter);this.rainFilter.connect(this.rainPan);this.rainPan.connect(this.rain);this.rain.connect(this.environment);noise.start();
        // A steady refrigerator/ventilation bed makes the public spaces audibly distinct.
        const hum=this.ctx.createOscillator();hum.type='sine';hum.frequency.value=96;
-       this.room=this.ctx.createGain();hum.connect(this.room);this.room.connect(this.master);hum.start();
+       this.room=this.ctx.createGain();hum.connect(this.room);this.room.connect(this.environment);hum.start();
      }catch{toast('此设备未能启用声音，字幕仍可完整阅读。');return;}}
      await this.ctx.resume().catch(()=>{});this.level();this.setAmbience(this.ambience);
    },
    level(){if(this.master)this.master.gain.setTargetAtTime(prefs.mute||document.hidden||mode!=='game'?0:prefs.volume/100,this.ctx.currentTime,.06);$('sound').textContent=prefs.mute?'声音 关':'声音 开';$('sound').setAttribute('aria-label',prefs.mute?'开启声音':'关闭声音');},
-   setAmbience(value){this.ambience=value;if(this.rain)this.rain.gain.setTargetAtTime(value==='quiet'?0:value==='hush'?.025:value==='store'?.025:.16,this.ctx.currentTime,.6);if(this.room)this.room.gain.setTargetAtTime(value==='store'?.018:0,this.ctx.currentTime,.7);},
+   setAmbience(value,scene=this.scene){
+     this.ambience=value;this.scene=scene;if(!this.ctx)return;
+     const enclosed=['night','lamp','bedroom-lit','bedside'].includes(scene),now=this.ctx.currentTime;
+     if(this.rain){this.rain.gain.setTargetAtTime(value==='quiet'?0:value==='rain'?(enclosed?.11:.19):.025,now,.65);this.rainFilter.frequency.setTargetAtTime(enclosed?460:1600,now,.7);this.rainPan.pan.setTargetAtTime(enclosed?.5:-.25,now,.7);}
+     if(this.room)this.room.gain.setTargetAtTime(value==='store'?.018:value==='quiet'?0:.003,now,.7);
+   },
+   duck(value,release=.8){this.ducked=value;$('app').dataset.audioDucked=String(value);if(this.environment){const gain=this.environment.gain;gain.cancelScheduledValues(this.ctx.currentTime);gain.setTargetAtTime(value?.055:1,this.ctx.currentTime,value?.12:release);}},
    cancel({keepKnocks=false}={}){const kept=[];for(const source of this.sources){if(keepKnocks&&source.isKnock){kept.push(source);continue;}try{source.stop();}catch{}}this.sources=kept;},
    knock(cue){
      const spec=window.HCKnock.cues[cue];if(!spec)return false;
@@ -41,7 +48,7 @@
      if(!buffer){const data=window.HCKnock.synthesize(spec.kind,this.ctx.sampleRate);buffer=this.ctx.createBuffer(1,data.length,this.ctx.sampleRate);buffer.copyToChannel(data,0);this.knockBuffers[spec.kind]=buffer;}
      for(let i=0;i<spec.count;i++){
        const source=this.ctx.createBufferSource(),pan=this.ctx.createStereoPanner(),amp=this.ctx.createGain();source.buffer=buffer;source.isKnock=true;
-       pan.pan.value=spec.pan;amp.gain.value=i===0?.85:.78;source.connect(amp);amp.connect(pan);pan.connect(this.master);
+       pan.pan.value=spec.pan;amp.gain.value=window.HCKnock.playbackGain*(i===0?1:.9);source.connect(amp);amp.connect(pan);pan.connect(this.master);
        source.start(this.ctx.currentTime+i*.48);this.sources.push(source);
        source.onended=()=>{source.disconnect();amp.disconnect();pan.disconnect();this.sources=this.sources.filter(s=>s!==source);};
      }
@@ -62,6 +69,7 @@
      if(cue==='call'){this.tone(440,0,.55,.035);this.tone(480,.65,.4,.025);return;}
      if(cue==='connect'){this.tone(630,0,.09,.035);return;}
      if(cue==='message'){this.tone(820,0,.18,.06);this.tone(1100,.13,.2,.04);return;}
+     if(cue==='message-close'){this.tone(155,0,.13,.038,0,'triangle');this.tone(155,.17,.12,.032,0,'triangle');this.tone(820,.06,.13,.035);return;}
      const far=cue==='double-far',near=cue==='double-near';const pan=far?.7:-.6;
      this.tone(near?190:140,0,.18,far?.2:.32,pan,'sine');
      this.tone(620,0,.045,far?.02:.05,pan,'triangle');
@@ -70,16 +78,28 @@
  };
  function applyPrefs(){document.documentElement.style.setProperty('--font',prefs.size+'px');sound.level();}
  applyPrefs();
- function clearTimers(){clearInterval(typing);typing=null;clearTimeout(autoTimer);autoTimer=null;for(const timer of stageTimers)clearTimeout(timer);stageTimers=[];staging=false;finishStage=null;$('app').dataset.stage='';$('app').dataset.phoneFocus='false';$('dialogue').removeAttribute('aria-busy');}
+ function clearTimers(){clearInterval(typing);typing=null;clearTimeout(autoTimer);autoTimer=null;for(const timer of stageTimers)clearTimeout(timer);stageTimers=[];staging=false;finishStage=null;textHeld=false;$('app').dataset.stage='';$('app').dataset.effect='';$('app').dataset.phoneFocus='false';$('dialogue').removeAttribute('aria-busy');}
+ function startText(instant=false){
+   textHeld=false;
+   if(instant||prefs.speed===0||matchMedia('(prefers-reduced-motion: reduce)').matches)completeText();
+   else typing=setInterval(()=>{typed++;$('text').textContent=fullText.slice(0,typed);if(typed>=fullText.length)completeText();},prefs.speed);
+ }
  function stageBeat(n,p){
    if(!n.staging||!prefs.staging)return;
    const cue=n.staging,hasPhone=!!(n.phone||n.phoneStatus);staging=true;clearTimeout(autoTimer);
    $('dialogue').setAttribute('aria-busy','true');$('advance-mark').textContent='';$('app').dataset.stage='waiting';
-   if(cue.duck)sound.setAmbience('quiet');
+   if(cue.duck)sound.duck(true);
    if(hasPhone&&cue.leadMs>0)$('phone').hidden=true;
-   const reveal=()=>{if(hasPhone)$('phone').hidden=false;$('app').dataset.stage='revealed';$('app').dataset.phoneFocus=String(!!cue.focusPhone);};
-   finishStage=()=>{for(const timer of stageTimers)clearTimeout(timer);stageTimers=[];reveal();staging=false;finishStage=null;$('dialogue').removeAttribute('aria-busy');$('app').dataset.stage='done';sound.setAmbience(p.ambience);if(!typing){$('advance-mark').textContent='›';scheduleAuto();}};
-   if(cue.leadMs>0)stageTimers.push(setTimeout(reveal,cue.leadMs));else reveal();
+   let revealed=false;
+   const reveal=(silent=false)=>{
+     if(revealed)return;revealed=true;
+     if(hasPhone)$('phone').hidden=false;$('app').dataset.stage='revealed';$('app').dataset.phoneFocus=String(!!cue.focusPhone||p.focus==='phone');
+     if(!silent&&cue.soundOnReveal)sound.play(n.sound);
+     if(!silent&&cue.effect)$('app').dataset.effect=cue.effect;
+     if(textHeld)startText(silent);
+   };
+   finishStage=({silent=false}={})=>{for(const timer of stageTimers)clearTimeout(timer);stageTimers=[];reveal(silent);staging=false;finishStage=null;$('dialogue').removeAttribute('aria-busy');$('app').dataset.stage='done';sound.duck(p.focus==='phone');if(!typing){$('advance-mark').textContent='›';scheduleAuto();}};
+   if(cue.leadMs>0)stageTimers.push(setTimeout(()=>reveal(),cue.leadMs));else reveal();
    stageTimers.push(setTimeout(()=>finishStage?.(),cue.leadMs+cue.holdMs));
  }
  function setAuto(value){auto=value;$('auto').textContent=value?'自动 开':'自动 关';$('auto').setAttribute('aria-pressed',String(value));clearTimeout(autoTimer);if(value&&!typing)scheduleAuto();}
@@ -87,23 +107,25 @@
  function saveAuto(){write('auto',{...model.snapshot(),savedAt:Date.now()});updateContinue();}
  function updateContinue(){const data=read('auto');$('continue').disabled=!model.validate(data);}
  function setMode(next){mode=next;$('title-screen').hidden=next!=='title';$('game-screen').hidden=next!=='game';$('ending').hidden=next!=='end';sound.level();}
- function showTitle(){$('app').dataset.intro='false';clearTimers();setAuto(false);sound.cancel();setMode('title');$('scenery').dataset.scene='bedroom-lit';$('chapter').textContent='第一章 · 明天见';updateContinue();$('start').focus();}
+ function showTitle(){$('app').dataset.intro='false';$('app').dataset.focus='none';clearTimers();sound.duck(false);setAuto(false);sound.cancel();setMode('title');$('scenery').dataset.scene='bedroom-lit';$('chapter').textContent='第一章 · 明天见';updateContinue();$('start').focus();}
  function completeText(){clearInterval(typing);typing=null;typed=fullText.length;$('text').textContent=fullText;$('advance-mark').textContent=model.node().choices||staging?'':'›';$('reading-hint').textContent='';showChoices();scheduleAuto();}
  function showChoices(){const choices=model.node().choices;if(!choices||typing){$('choices').hidden=true;return;}setAuto(false);$('choices').replaceChildren();for(const c of choices){const b=document.createElement('button');b.textContent=c.label;b.addEventListener('click',()=>{sound.init();if(model.choose(c.id)){render();$('dialogue').focus();}});$('choices').append(b);}$('choices').hidden=false;}
  function render({instant=false,quiet=false}={}){
-   clearTimers();sound.cancel({keepKnocks:!quiet});const n=model.resolved(),p=model.presentation();$('app').dataset.intro=String(p.scene==='black');$('app').dataset.pressure=String(p.pressure);$('scenery').dataset.camera=p.camera;
+   clearTimers();sound.cancel({keepKnocks:!quiet});const n=model.resolved(),p=model.presentation(),timed=!!(!instant&&!quiet&&prefs.staging&&n.staging);$('app').dataset.intro=String(p.scene==='black');$('app').dataset.pressure=String(p.pressure);$('app').dataset.focus=p.focus;$('app').dataset.phoneFocus=String(p.focus==='phone'&&!timed);$('scenery').dataset.camera=p.camera;sound.duck(p.focus==='phone');
    if(n.end){sound.cancel();setAuto(false);setMode('end');$('scenery').dataset.scene='black';saveAuto();$('ending').querySelector('small').textContent=storageWorking?'本次阅读已保存在自动存档中':'本地存档不可用，可返回回看后导出进度';$('replay').focus();return;}
-   setMode('game');$('scenery').dataset.scene=p.scene;$('place').textContent=p.place;$('time').textContent=p.time;$('chapter').textContent=p.chapter;sound.setAmbience(p.ambience);
+   setMode('game');$('scenery').dataset.scene=p.scene;$('place').textContent=p.place;$('time').textContent=p.time;$('chapter').textContent=p.chapter;sound.setAmbience(p.ambience,p.scene);
    $('chapter-card').hidden=!n.card;if(n.card){$('card-kicker').textContent=n.card[0];$('card-title').textContent=n.card[1];$('card-subtitle').textContent=n.card[2];}
-   $('speaker').textContent=n.speaker||'';$('speaker').hidden=!n.speaker;$('phone').hidden=!(n.phone||n.phoneStatus);$('phone').querySelector('b').textContent=n.phoneTitle||'陈屿';$('dialogue').classList.toggle('sound-beat',!!n.beat);$('phone-lines').replaceChildren();
+   const phone=n.phone||p.heldPhone?.lines;
+   $('app').dataset.phoneCarry=String(!n.phone&&!!p.heldPhone);
+   $('speaker').textContent=n.speaker||'';$('speaker').hidden=!n.speaker;$('phone').hidden=!(phone||n.phoneStatus);$('phone').querySelector('b').textContent=n.phoneTitle||p.heldPhone?.title||'陈屿';$('dialogue').classList.toggle('sound-beat',!!n.beat);$('phone-lines').replaceChildren();
    if(n.phoneStatus){const status=document.createElement('div');status.className='call-status';status.textContent=n.phoneStatus;$('phone-lines').append(status);}
-   if(n.phone){for(const [speaker,text]of n.phone){const bubble=document.createElement('div');bubble.className='bubble'+(speaker==='我'?' me':'');bubble.textContent=text;$('phone-lines').append(bubble);}$('phone').scrollTop=0;}
+   if(phone){for(const [speaker,text]of phone){const bubble=document.createElement('div');bubble.className='bubble'+(speaker==='我'?' me':'');bubble.textContent=text;$('phone-lines').append(bubble);}$('phone').scrollTop=0;}
    $('choices').hidden=true;$('back').disabled=model.snapshot().path.length===1;
    fullText=n.text||'';typed=0;$('text').textContent='';$('advance-mark').textContent='';$('reading-hint').textContent='轻点画面，显示整句';
-   if(!quiet)sound.play(n.sound);
-   if(instant||prefs.speed===0||matchMedia('(prefers-reduced-motion: reduce)').matches)completeText();
-   else typing=setInterval(()=>{typed++;$('text').textContent=fullText.slice(0,typed);if(typed>=fullText.length)completeText();},prefs.speed);
-   if(!instant&&!quiet)stageBeat(n,p);
+   if(!quiet&&!(timed&&n.staging.soundOnReveal))sound.play(n.sound);
+   textHeld=!!(timed&&n.staging.hideText);
+   if(!textHeld)startText(instant);
+   if(timed)stageBeat(n,p);
    saveAuto();
  }
  async function start(){if($('panel').open)$('panel').close();setAuto(false);model.reset();setMode('game');await sound.init();render();$('dialogue').focus();}
@@ -111,7 +133,7 @@
  function back(){if(mode!=='game'||$('panel').open)return;setAuto(false);if(model.back())render({instant:true,quiet:true});}
  function loadData(data){try{model.restore(data);$('panel').close();setAuto(false);setMode('game');sound.init();render({instant:true,quiet:true});$('dialogue').focus();}catch(e){toast(e.message);}}
  function openPanel(title,kicker='HUI CHENG'){
-   setAuto(false);finishStage?.();if(typing)completeText();sound.cancel();lastFocus=document.activeElement;$('panel-title').textContent=title;$('panel-kicker').textContent=kicker;$('panel-body').replaceChildren();
+   setAuto(false);finishStage?.({silent:true});if(typing)completeText();sound.cancel();lastFocus=document.activeElement;$('panel-title').textContent=title;$('panel-kicker').textContent=kicker;$('panel-body').replaceChildren();
    if(!$('panel').open)$('panel').showModal();$('close-panel').focus();return $('panel-body');
  }
  function button(label,action,parent){const b=document.createElement('button');b.textContent=label;b.addEventListener('click',action);parent.append(b);return b;}
@@ -134,7 +156,7 @@
      range.addEventListener('input',()=>{prefs[key]=Number(range.value);out.textContent=prefs[key]+unit;applyPrefs();write('preferences',prefs);});
    }
    const stageButton=button('演出停顿：'+(prefs.staging?'开':'关'),()=>{prefs.staging=!prefs.staging;stageButton.textContent='演出停顿：'+(prefs.staging?'开':'关');stageButton.setAttribute('aria-pressed',String(prefs.staging));write('preferences',prefs);},body);stageButton.id='stage-toggle';stageButton.setAttribute('aria-pressed',String(prefs.staging));
-   paragraph('演出停顿用于关键敲击和消息，最长 3.4 秒。期间点击可补全文字，但暂不跳到下一句；回看或读档不会重复等待。可在上方关闭。',body);
+   paragraph('演出停顿用于关键敲击和消息，最长 3.9 秒。部分片刻会先留白，再同步出现声音和文字；期间不能提前揭示或跳过。回退、读档不重复等待，可在上方关闭。',body);
    paragraph('逐字间隔设为 0 可立即显示全文。自动阅读会在选择处停止；打开面板或切到其他窗口时也会停止。',body);
    paragraph('空格 / Enter：推进　←：上一句　H：回看　A：自动　S：保存　L：读取　Esc：设置 / 关闭面板　F11：全屏',body);
    paragraph('声音包含合成雨声、室内低鸣、敲击与电话提示；当前没有配音或背景音乐。所有关键信息都有文字提示。',body);
@@ -192,8 +214,9 @@
    else if(e.key.toLowerCase()==='h')history();else if(e.key.toLowerCase()==='a')setAuto(!auto);
    else if(e.key.toLowerCase()==='s')slots(true);else if(e.key.toLowerCase()==='l')slots(false);
  });
- document.addEventListener('visibilitychange',()=>{if(document.hidden)setAuto(false);sound.level();});
- window.addEventListener('blur',()=>setAuto(false));
+ function settleOnLeave(){setAuto(false);finishStage?.({silent:true});sound.cancel();$('app').dataset.effect='';}
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)settleOnLeave();sound.level();});
+ window.addEventListener('blur',settleOnLeave);
  window.addEventListener('beforeunload',()=>{if(mode!=='title')saveAuto();});
  showTitle();
 })();

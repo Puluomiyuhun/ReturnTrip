@@ -1,7 +1,7 @@
 /* Compile the editable manuscript and its explicit stage cues into a linear story. */
 const fs=require('node:fs'),path=require('node:path');
 const source=fs.existsSync(path.resolve(__dirname,'../story'))?path.resolve(__dirname,'../story'):path.resolve(__dirname,'../回程-前两章-v0.6剧本');
-const files=['第一章-明天见.md','第二章-等一会儿.md'];
+const files=['第一章-明天见.md','第二章-等一会儿.md','第三章-门开着.md'];
 const nodes={},chapters=[];
 for(const [i,file] of files.entries()){
  const blocks=fs.readFileSync(path.join(source,file),'utf8').trim().split(/\r?\n\s*\r?\n/);
@@ -20,7 +20,7 @@ for(const [i,file] of files.entries()){
  }
 }
 const ids=Object.keys(nodes);ids.forEach((id,i)=>nodes[id].next=ids[i+1]||'end');
-nodes.end={id:'end',end:true,text:'前两章 · 完'};
-const story={id:'huicheng-chapters-v06',version:1,title:'回程',start:ids[0],chapters,nodes};
+nodes.end={id:'end',end:true,text:'前三章 · 完'};
+const story={id:'huicheng-chapters-v07',version:1,title:'回程',start:ids[0],chapters,nodes};
 fs.writeFileSync(path.join(__dirname,'story.js'),`(function(root){const story=${JSON.stringify(story,null,2)};if(typeof module!=='undefined'&&module.exports)module.exports=story;else root.HCStory=story;})(typeof globalThis!=='undefined'?globalThis:this);\n`);
 console.log(JSON.stringify({chapters:chapters.length,nodes:ids.length,characters:Object.values(nodes).reduce((s,n)=>s+n.text.length+(n.phone||[]).reduce((a,p)=>a+p[1].length,0),0)},null,2));

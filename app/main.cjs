@@ -15,7 +15,7 @@ else {
    session.defaultSession.setPermissionRequestHandler((_wc,_permission,callback)=>callback(false));
    session.defaultSession.setPermissionCheckHandler(()=>false);
    session.defaultSession.webRequest.onBeforeRequest({urls:['http://*/*','https://*/*','ws://*/*','wss://*/*']},(_details,cb)=>cb({cancel:true}));
-   win = new BrowserWindow({width:1440,height:900,minWidth:860,minHeight:640,show:false,title:'回程 · 前两章',backgroundColor:'#10171d',autoHideMenuBar:true,icon:path.join(__dirname,'assets','icon.png'),webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true,devTools:false,backgroundThrottling:!qa}});
+   win = new BrowserWindow({width:1440,height:900,minWidth:860,minHeight:640,show:false,title:'回程 · 前三章',backgroundColor:'#10171d',autoHideMenuBar:true,icon:path.join(__dirname,'assets','icon.png'),webPreferences:{nodeIntegration:false,contextIsolation:true,sandbox:true,webSecurity:true,devTools:false,backgroundThrottling:!qa}});
    win.webContents.setWindowOpenHandler(()=>({action:'deny'}));
    win.webContents.on('will-navigate',event=>event.preventDefault());
    win.webContents.on('before-input-event',(event,input)=>{if(input.key==='F11' && input.type==='keyDown'){win.setFullScreen(!win.isFullScreen());event.preventDefault();}});
