@@ -1,0 +1,50 @@
+/* Continuous lighting states; camera changes never change viewpoint identity. */
+:root{--story-type:var(--font)}
+header{opacity:1}
+header #chapter,#scene-label,#scene-label #time{font-size:var(--story-type);line-height:1.4;font-family:var(--round);letter-spacing:.5px;color:#e4ede8;text-shadow:0 2px 5px #000b}
+#scene-label{opacity:1;align-items:baseline;gap:18px}
+@media(min-width:1700px){:root{--story-type:calc(var(--font) + 4px)}}
+@media(max-width:600px){:root{--story-type:calc(var(--font) - 3px)}header{flex-wrap:wrap;height:auto;min-height:90px;gap:8px 12px}header #chapter{order:4;width:100%;margin:0}#scene-label{top:110px}}
+.scenery{opacity:1;transition:opacity 1.2s,filter .9s,transform 2.2s;transform:scale(1.01);filter:brightness(.95)}
+#app[data-intro="true"]{background:#000}
+#app[data-intro="true"] header,#app[data-intro="true"] .shade,#app[data-intro="true"] .grain{visibility:hidden}
+#app[data-intro="true"] #dialogue{background:none;backdrop-filter:none;box-shadow:none}
+.scenery[data-scene="bedroom-lit"],.scenery[data-scene="bedside"]{background-image:url('assets/bedroom-lit.png');filter:brightness(.93)}
+.scenery[data-scene="night"]{background-image:url('assets/bedroom.png');filter:brightness(.65)}
+.scenery[data-scene="lamp"]{background-image:url('assets/bedroom-lamp.png');filter:brightness(.9)}
+.scenery[data-scene="living"],.scenery[data-scene="living-evening"],.scenery[data-scene="doorway"],.scenery[data-scene="doorway-close"],.scenery[data-scene="ending-door"]{background-image:url('assets/living.png');filter:brightness(.94)}
+.scenery[data-scene="living-evening"]{background-image:url('assets/living-evening.png');transform:scale(1.01)}
+.scenery[data-scene="living-dark"]{background-image:url('assets/living-dark.png');filter:brightness(.82);transform:scale(1.65);transform-origin:0% 45%;transition:filter .9s}
+.scenery[data-scene="doorway"]{transform:scale(1.18);transform-origin:96% 45%}
+.scenery[data-scene="doorway-close"]{transform:scale(1.3);transform-origin:96% 43%}
+.scenery[data-scene="bedside"]{transform:scale(1.2);transform-origin:26% 38%}
+.scenery[data-scene="ending-door"]{transform:scale(1.1);transform-origin:92% 45%}
+.scenery[data-scene="black"]{opacity:0}
+.sound-beat #text{letter-spacing:2px}
+.call-status{padding:22px 0;text-align:center;font-size:20px;color:#c9d8d5}
+#reading-hint{display:none!important}
+.dialogue-foot{justify-content:flex-end}
+#phone{max-height:31dvh}.prototype{font-size:13px}
+#phone{scrollbar-width:thin;scrollbar-color:#9cb6b255 #192a3340}
+.phone-top{position:sticky;top:0;z-index:1;background:#192a33f5;margin-left:-20px;margin-right:-20px;padding-left:20px;padding-right:20px}
+.scenery[data-scene="hallway"]{background-image:url('assets/hallway.png');filter:brightness(.88);transform:scale(1.01)}
+.scenery[data-scene="store"]{background-image:url('assets/store.png');filter:brightness(.94);transform:scale(1.01)}
+.scenery[data-scene="restaurant"]{background-image:url('assets/restaurant.png');filter:brightness(.94);transform:scale(1.01)}
+.scenery[data-scene="living-day"]{background-image:url('assets/living-day.png');filter:brightness(1);transform:scale(1.01)}
+.scenery[data-camera="near"]{transform:scale(1.09);transform-origin:44% 52%}
+.scenery[data-camera="door"]{transform:scale(1.14);transform-origin:78% 48%;transition:transform 3.5s,filter 1s}
+.scenery[data-scene="living"][data-camera="away"]{transform:scale(1.65);transform-origin:0% 45%;transition:filter .9s}
+#app::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;box-shadow:inset 0 0 18vw 5vw #02050900;transition:box-shadow 2s}
+#app[data-pressure="2"]::after{box-shadow:inset 0 0 18vw 4vw #02050945}
+#app[data-pressure="3"]::after{box-shadow:inset 0 0 16vw 4vw #02050980}
+#app[data-intro="true"]::after{display:none}
+#app[data-intro="true"] #scene-label{visibility:hidden}
+.log-message{color:#b4d5cc;font-size:.92em}
+#app[data-stage="waiting"] #advance-mark,#app[data-stage="revealed"] #advance-mark{visibility:hidden}
+#app[data-phone-focus="true"] .scenery{filter:brightness(.38) saturate(.65);transition:filter 1.2s,transform 2.2s}
+#app[data-phone-focus="true"] #phone{left:50%;right:auto;top:24%;width:min(430px,70vw);max-height:32dvh;transform:translateX(-50%);animation:none;background:#15252cf2;box-shadow:0 14px 65px #0008;border-color:#bfd4d349}
+#app[data-phone-focus="true"] #phone .bubble{font-size:var(--story-type);background:transparent;padding:18px 12px;max-width:100%;margin:10px auto;text-align:center}
+#app[data-phone-focus="true"] #phone .phone-top{background:#15252c}
+#app[data-phone-focus="true"] #dialogue{opacity:.5;transition:opacity .7s}
+#stage-toggle{padding:12px 18px;border:1px solid #b8cfc54a;border-radius:7px;margin-top:8px}
+@media(prefers-reduced-motion:reduce){.scenery{transition:none!important}}

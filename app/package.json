@@ -1,0 +1,12 @@
+{
+  "name": "huicheng-chapters",
+  "productName": "回程",
+  "version": "0.6.0",
+  "description": "回程 — 第一章 明天见 / 第二章 等一会儿",
+  "main": "main.cjs",
+  "private": true,
+  "scripts": {
+    "build": "node build.cjs",
+    "test": "node --test test.cjs"
+  }
+}

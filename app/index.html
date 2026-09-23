@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10171d">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>回程 · 前两章</title>
+  <link rel="preload" as="image" href="assets/bedroom.png">
+  <link rel="preload" as="image" href="assets/bedroom-lit.png">
+  <link rel="preload" as="image" href="assets/bedroom-lamp.png">
+  <link rel="preload" as="image" href="assets/living.png">
+  <link rel="preload" as="image" href="assets/living-dark.png">
+  <link rel="preload" as="image" href="assets/hallway.png">
+  <link rel="preload" as="image" href="assets/store.png">
+  <link rel="preload" as="image" href="assets/restaurant.png">
+  <link rel="preload" as="image" href="assets/living-day.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="theme.css">
+  <link rel="stylesheet" href="quiet.css">
+  <link rel="stylesheet" href="chapter.css">
+  <script defer src="story.js"></script>
+  <script defer src="model.js"></script>
+  <script defer src="knock.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+<main id="app">
+  <div id="scenery" class="scenery" aria-hidden="true"></div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <header><span class="brand">回程 <i>hui cheng</i></span><span id="chapter">明天见</span><button id="sound" aria-label="关闭声音">声音 开</button><button id="fullscreen">全屏</button></header>
+  <section id="title-screen" aria-label="主菜单">
+    <div class="title-copy"><p class="eyebrow">A STORY ON THE OTHER SIDE</p><h1>回<span>程</span></h1><p class="tagline">明晚七点半。等你到了再点。</p><div class="title-rule"></div><nav class="title-nav"><button id="start">开始阅读 <span>01 — 明天见</span></button><button id="continue" disabled>继续阅读 <span>从上次停下的地方</span></button><button id="title-load">读取存档 <span>拾起一段记忆</span></button><button id="title-settings">阅读设置 <span>文字 · 声音</span></button></nav><p class="prototype">第一章 · 明天见　／　第二章 · 等一会儿<br>剧情开发版 0.6</p></div>
+    <div class="title-coordinate" aria-hidden="true"><span>01:17</span><small>雨还没有停。</small></div>
+  </section>
+  <section id="game-screen" hidden aria-label="故事阅读">
+    <div id="scene-label"><span id="place"></span><span id="time"></span></div>
+    <aside id="phone" hidden data-no-advance aria-label="手机消息，可滚动查看"><div class="phone-top"><span>消息</span><b>陈屿</b><span>•••</span></div><div id="phone-lines"></div></aside>
+    <div id="chapter-card" hidden><small id="card-kicker"></small><h2 id="card-title"></h2><p id="card-subtitle"></p></div>
+    <div id="choices" hidden aria-label="选择回应方式"></div>
+    <section id="dialogue" tabindex="0" role="button" aria-label="继续阅读"><div id="speaker"></div><p id="text"></p><div class="dialogue-foot"><span id="reading-hint">点击 / 空格 继续</span><span id="advance-mark" aria-hidden="true">◇</span></div></section>
+    <nav id="toolbar" aria-label="阅读控制"><button id="back">上一句</button><button id="history">回看</button><span class="toolbar-spacer"></span><button id="auto">自动 关</button><button id="save">保存</button><button id="load">读取</button><button id="settings">设置</button><button id="home">标题</button></nav>
+  </section>
+  <section id="ending" hidden aria-label="前两章结束"><p class="eyebrow">THE OTHER SIDE</p><h2>等一会儿</h2><p>第二章 · 完</p><p class="ending-note">电话还通着。<br>本次内容到此，后续章节制作中。</p><div class="ending-actions"><button id="replay">重新阅读</button><button id="end-history">查看回看</button><button id="end-title">返回标题</button></div><small>本次阅读已保存在自动存档中</small></section>
+  <div id="toast" role="status" aria-live="polite"></div>
+</main>
+<dialog id="panel"><div class="panel-head"><div><small id="panel-kicker">HUI CHENG</small><h2 id="panel-title"></h2></div><button id="close-panel" aria-label="关闭面板">×</button></div><div id="panel-body"></div></dialog>
+<input id="import-file" type="file" accept="application/json,.json" hidden>
+</body>
+</html>

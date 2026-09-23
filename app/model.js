@@ -1,0 +1,49 @@
+(function(root){
+ 'use strict';
+ function createModel(story){
+   let path=[story.start];
+   const node=()=>story.nodes[path[path.length-1]];
+   function choice(){
+     for(let i=0;i<path.length-1;i++){
+       const n=story.nodes[path[i]];
+       const picked=n.choices?.find(c=>c.next===path[i+1]);
+       if(picked)return picked.id;
+     }
+     return null;
+   }
+   function resolved(n=node()){
+     const c=choice();
+     return {...n,text:n.textByChoice?.[c] ?? n.text,sound:n.soundByChoice?.[c] ?? n.sound};
+   }
+   function presentation(){
+     const state={scene:'black',place:'',time:'',ambience:'quiet',chapter:'第一章 · 明天见',pressure:0,camera:'wide'};
+     for(const id of path){const n=story.nodes[id];for(const key of Object.keys(state))if(n[key]!=null)state[key]=n[key];}
+     return state;
+   }
+   function migrate(data){
+     if(story.id==='huicheng-chapter1-v1' && story.start==='chapter1-intro-1' && data?.story===story.id && data.version===story.version && Array.isArray(data.path) && data.path[0]==='chapter1-000')return {...data,path:['chapter1-intro-1','chapter1-intro-2',...data.path]};
+     return data;
+   }
+   function validate(data){
+     data=migrate(data);
+     if(!data || data.story!==story.id || data.version!==story.version || !Array.isArray(data.path) || data.path.length<1 || data.path.length>Object.keys(story.nodes).length || data.path[0]!==story.start)return false;
+     for(let i=0;i<data.path.length;i++){
+       const n=story.nodes[data.path[i]];
+       if(!n)return false;
+       if(i+1<data.path.length){const next=data.path[i+1];if(n.choices?!n.choices.some(c=>c.next===next):n.next!==next)return false;}
+     }
+     return true;
+   }
+   return {
+     node,resolved,presentation,choice,validate,
+     history:()=>path.map(id=>resolved(story.nodes[id])),
+     next:()=>{const n=node();if(n.next){path.push(n.next);return true;}return false;},
+     choose:(id)=>{const c=node().choices?.find(c=>c.id===id);if(!c)return false;path.push(c.next);return true;},
+     back:()=>{if(path.length<=1)return false;path.pop();return true;},
+     reset:()=>{path=[story.start];},
+     snapshot:()=>({story:story.id,version:story.version,path:[...path]}),
+     restore:(data)=>{if(!validate(data))throw new Error('存档不属于本试作，或内容已损坏。');path=[...migrate(data).path];}
+   };
+ }
+ if(typeof module!=='undefined' && module.exports)module.exports={createModel};else root.HCModel={createModel};
+})(typeof globalThis!=='undefined'?globalThis:this);
