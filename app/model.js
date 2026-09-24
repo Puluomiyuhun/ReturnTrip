@@ -16,17 +16,19 @@
      return {...n,text:n.textByChoice?.[c] ?? n.text,sound:n.soundByChoice?.[c] ?? n.sound};
    }
    function presentation(){
-     const state={scene:'black',backgroundScene:'black',backgroundCamera:'wide',place:'',time:'',ambience:'quiet',chapter:'第一章 · 明天见',pressure:0,camera:'wide',focus:'none',heldPhone:null};
+     const state={scene:'black',backgroundScene:'black',backgroundCamera:'wide',place:'',time:'',ambience:'quiet',chapter:'第一章 · 明天见',pressure:0,camera:'wide',focus:'none',heldPhone:null,heldStatus:null};
      for(const id of path){
        const n=story.nodes[id];
-       if(n.scene!=null||n.phone||n.phoneStatus||n.clearPhone){state.heldPhone=null;if(state.focus==='phone'||n.scene!=null)state.focus='none';}
+       if(n.scene!=null||n.phone||n.phoneStatus||n.clearPhone){state.heldPhone=null;state.heldStatus=null;if(state.focus==='phone'||n.scene!=null)state.focus='none';}
        for(const key of ['scene','place','time','ambience','chapter','pressure','camera','focus'])if(n[key]!=null)state[key]=n[key];
        if(state.scene!=='black'){state.backgroundScene=state.scene;state.backgroundCamera=state.camera;}
        if(n.holdPhone&&n.phone)state.heldPhone={title:n.phoneTitle,lines:n.phone};
+       if(n.holdPhone&&n.phoneStatus)state.heldStatus={title:n.phoneTitle,status:n.phoneStatus};
      }
      return state;
    }
    function migrate(data){
+     // 0.11 rewrites all chapter paths. Earlier release saves remain in their own app.
      if(story.id==='huicheng-chapter1-v1' && story.start==='chapter1-intro-1' && data?.story===story.id && data.version===story.version && Array.isArray(data.path) && data.path[0]==='chapter1-000')return {...data,path:['chapter1-intro-1','chapter1-intro-2',...data.path]};
      if(data?.story===story.id&&data.version===story.version&&Array.isArray(data.path)){
        const expanded=[];for(const id of data.path){const prefix=story.nodes[id]?.noticeBefore;if(prefix&&expanded.at(-1)!==prefix)expanded.push(prefix);expanded.push(id);}

@@ -52,6 +52,15 @@ header #chapter,#scene-label,#scene-label #time{font-size:var(--story-type);line
 @media(prefers-reduced-motion:reduce){.scenery{transition:none!important}}
 
 /* Attention follows the character's gaze; only the background moves on impact. */
+.evidence-button{padding:8px 14px;border:1px solid #b8cfc54a;border-radius:5px;margin-top:10px}
+.evidence-image{display:block;width:100%;height:auto;max-height:52dvh;object-fit:contain}
+#title-screen .title-copy{top:11%;width:min(540px,85vw)}
+#title-screen h1{font-size:88px;margin:14px 0 10px}
+#title-screen .title-rule{margin:20px 0}
+#title-screen .title-nav{gap:3px}
+#title-screen .title-nav button{padding:7px 0;font-size:18px}
+#title-screen .prototype{margin-top:16px;line-height:1.7}
+@media(max-height:740px){#title-screen .title-copy{top:12%}#title-screen h1{font-size:64px;margin:8px 0}#title-screen .title-rule{margin:12px 0}#title-screen .title-nav button{font-size:16px;padding:4px 0}#title-screen .prototype{font-size:11px;margin-top:10px}}
 #app::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:0;transition:opacity 1.2s;background:radial-gradient(ellipse at 52% 43%,transparent 18%,#030609aa 92%)}
 #app[data-focus="listen"]::before{opacity:.82}
 #app[data-focus="bed"]::before{opacity:.88;background:radial-gradient(ellipse at 39% 57%,transparent 12%,#020509ad 85%)}
@@ -83,3 +92,6 @@ header #chapter,#scene-label,#scene-label #time{font-size:var(--story-type);line
 [data-voice="recording"]{--voice-accent:#c7cbd1!important}
 #speaker{color:var(--voice-accent);font-size:20px;font-weight:500;border-left:3px solid var(--voice-accent);padding-left:10px;line-height:1.35}
 #phone .phone-top b,.log-entry>small{color:var(--voice-accent)}
+
+/* Subtle distinct accent for ordinary police dialogue. */
+[data-voice=police] { --voice-accent: #adc4c9!important; }

@@ -1,8 +1,8 @@
 {
   "name": "huicheng-chapters",
   "productName": "回程",
-  "version": "0.7.0",
-  "description": "回程 — 第一章 明天见 / 第二章 等一会儿 / 第三章 门开着",
+  "version": "0.11.0",
+  "description": "回程 — 第一章 明天见 / 第二章 等一会儿 / 第三章 带上东西 / 第四章 先下来 / 第五章 照片里的位置",
   "main": "main.cjs",
   "private": true,
   "scripts": {
